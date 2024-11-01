@@ -1,0 +1,175 @@
+[
+    {
+      "alumni": [
+        {
+          "id": 1,
+          "name": "Anand Joshi",
+          "email": "anandjoshi@gmail.com",
+          "portfolio_link": "www.anandjoshi.com",
+          "location": "New York, NY",
+          "residency": "Residency 1"
+        },
+        {
+          "id": 2,
+          "name": "Sarah Mitchell",
+          "email": "sarahmitchell@gmail.com",
+          "portfolio_link": "www.sarahmitchell.com",
+          "location": "San Francisco, CA",
+          "residency": "Residency 2"
+        },
+        {
+          "id": 3,
+          "name": "James Chen",
+          "email": "jameschen@gmail.com",
+          "portfolio_link": "www.jameschen.io",
+          "location": "Seattle, WA",
+          "residency": "Residency 3"
+        },
+        {
+          "id": 4,
+          "name": "Maria Garcia",
+          "email": "mariagarcia@gmail.com",
+          "portfolio_link": "www.mariagarcia.net",
+          "location": "Miami, FL",
+          "residency": "Residency 1"
+        },
+        {
+          "id": 5,
+          "name": "Robert Kim",
+          "email": "robertkim@gmail.com",
+          "portfolio_link": "www.robertkim.dev",
+          "location": "Chicago, IL",
+          "residency": "Residency 2"
+        },
+        {
+          "id": 6,
+          "name": "Emily Johnson",
+          "email": "emilyjohnson@gmail.com",
+          "portfolio_link": "www.emilyjohnson.design",
+          "location": "Austin, TX",
+          "residency": "Residency 3"
+        },
+        {
+          "id": 7,
+          "name": "Michael Patel",
+          "email": "michaelpatel@gmail.com",
+          "portfolio_link": "www.michaelpatel.co",
+          "location": "Boston, MA",
+          "residency": "Residency 1"
+        },
+        {
+          "id": 8,
+          "name": "Lisa Wong",
+          "email": "lisawong@gmail.com",
+          "portfolio_link": "www.lisawong.art",
+          "location": "Portland, OR",
+          "residency": "Residency 2"
+        },
+        {
+          "id": 9,
+          "name": "David Miller",
+          "email": "davidmiller@gmail.com",
+          "portfolio_link": "www.davidmiller.tech",
+          "location": "Denver, CO",
+          "residency": "Residency 3"
+        },
+        {
+          "id": 10,
+          "name": "Anna Kowalski",
+          "email": "annakowalski@gmail.com",
+          "portfolio_link": "www.annakowalski.com",
+          "location": "Philadelphia, PA",
+          "residency": "Residency 1"
+        },
+        {
+          "id": 11,
+          "name": "Thomas Anderson",
+          "email": "tanderson@gmail.com",
+          "portfolio_link": "www.tanderson.io",
+          "location": "Las Vegas, NV",
+          "residency": "Residency 2"
+        },
+        {
+          "id": 12,
+          "name": "Sophie Martin",
+          "email": "sophiemartin@gmail.com",
+          "portfolio_link": "www.sophiemartin.design",
+          "location": "Atlanta, GA",
+          "residency": "Residency 3"
+        },
+        {
+          "id": 13,
+          "name": "Ryan Murphy",
+          "email": "ryanmurphy@gmail.com",
+          "portfolio_link": "www.ryanmurphy.dev",
+          "location": "Nashville, TN",
+          "residency": "Residency 1"
+        },
+        {
+          "id": 14,
+          "name": "Julia Santos",
+          "email": "juliasantos@gmail.com",
+          "portfolio_link": "www.juliasantos.art",
+          "location": "San Diego, CA",
+          "residency": "Residency 2"
+        },
+        {
+          "id": 15,
+          "name": "Hassan Ahmed",
+          "email": "hassanahmed@gmail.com",
+          "portfolio_link": "www.hassanahmed.co",
+          "location": "Houston, TX",
+          "residency": "Residency 3"
+        },
+        {
+          "id": 16,
+          "name": "Rachel Cohen",
+          "email": "rachelcohen@gmail.com",
+          "portfolio_link": "www.rachelcohen.com",
+          "location": "Minneapolis, MN",
+          "residency": "Residency 1"
+        },
+        {
+          "id": 17,
+          "name": "Daniel Lee",
+          "email": "daniellee@gmail.com",
+          "portfolio_link": "www.daniellee.tech",
+          "location": "Detroit, MI",
+          "residency": "Residency 2"
+        },
+        {
+          "id": 18,
+          "name": "Nina Patel",
+          "email": "ninapatel@gmail.com",
+          "portfolio_link": "www.ninapatel.design",
+          "location": "Phoenix, AZ",
+          "residency": "Residency 3"
+        },
+        {
+          "id": 19,
+          "name": "Chris Wilson",
+          "email": "chriswilson@gmail.com",
+          "portfolio_link": "www.chriswilson.io",
+          "location": "Salt Lake City, UT",
+          "residency": "Residency 1"
+        },
+        {
+          "id": 20,
+          "name": "Alexandra Kim",
+          "email": "alexandrakim@gmail.com",
+          "portfolio_link": "www.alexandrakim.com",
+          "location": "Dallas, TX",
+          "residency": "Residency 2"
+        },
+        {
+          "id": 21,
+          "name": "Marco Rossi",
+          "email": "marcorossi@gmail.com",
+          "portfolio_link": "www.marcorossi.dev",
+          "location": "Sacramento, CA",
+          "residency": "Residency 3"
+        }
+      ]
+    }
+  ]
+  
