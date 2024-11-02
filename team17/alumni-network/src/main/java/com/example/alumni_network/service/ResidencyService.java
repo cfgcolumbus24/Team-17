@@ -37,5 +37,4 @@ public class ResidencyService {
     public void deleteResidency(Integer id) {
         residencyRepository.deleteById(id);
     }
-
 }

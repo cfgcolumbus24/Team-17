@@ -40,7 +40,7 @@ VALUES
 
 SELECT * FROM person;
 SELECT * FROM residency;
-SELECT * FROM person_residency;
+SELECT * FROM personresidency;
 SELECT Post_Date, Picture_URL, Title, Author_ID, Tag_ID FROM Posts;
 
 
@@ -98,5 +98,5 @@ VALUES
 (3, 'Collaboration Ad: Clay Sculpting Techniques for Beginners', 'A practical guide to sculpting with clay, perfect for novices.', 2, 'https://example.com/image4.jpg', NOW(), TRUE),
 (4, 'Spotlight on the Digital Art Revolution', 'Investigating the rise of digital art and its influence on the art scene.', 1, 'https://example.com/image5.jpg', NOW(), TRUE),
 (2, 'Resource: Mastering Mixed Media Techniques', 'Tips on combining different mediums to create distinctive artwork.', 4, 'https://example.com/image6.jpg', NOW(), TRUE),
-(3, 'Spotlight: The Importance of Artist Residencies', 'Exploring the crucial role of residencies in an artist’s career development.', 1, 'https://example.com/image7.jpg', NOW(), TRUE),
+(3, 'Spotlight: The Importance of Artist Residencies', 'Exploring the crucial role of residencies in an artistï¿½s career development.', 1, 'https://example.com/image7.jpg', NOW(), TRUE),
 (4, 'Collaboration Ad: Embracing Technology in Art', 'Examining how technology is transforming the art world.', 2, 'https://example.com/image8.jpg', NOW(), TRUE);
