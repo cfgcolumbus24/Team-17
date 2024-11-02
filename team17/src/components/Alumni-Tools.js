@@ -64,6 +64,14 @@ function AlumniTools() {
         },
     ];
 
+    // Define color mappings for each category
+    const categoryColors = {
+        'Collaboration': '#1e90ff', // blue
+        'Spotlight': '#ff69b4', // pink
+        'Alumni Event': '#32cd32', // green
+        'Resources': '#ffa500', // orange
+    };
+
     const filteredPosts = posts.filter(post => {
         const matchesFilter = selectedFilters.length === 0 || selectedFilters.includes(post.category.title);
         const matchesSearch = [post.title, post.description, post.author].some(text =>
@@ -110,7 +118,7 @@ function AlumniTools() {
                                 style={{
                                     padding: '10px 15px',
                                     fontSize: '16px',
-                                    backgroundColor: selectedFilters.includes(filter) ? '#000' : '#e0e0e0',
+                                    backgroundColor: selectedFilters.includes(filter) ? categoryColors[filter] : '#e0e0e0',
                                     color: selectedFilters.includes(filter) ? '#fff' : '#000',
                                     border: 'none',
                                     borderRadius: '5px',
@@ -125,7 +133,6 @@ function AlumniTools() {
             </div>
 
             <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-                {/* Tags Box (Shows Selected Filters on the Left) */}
                 <div style={{ marginRight: '20px', padding: '10px', minWidth: '150px', display: 'flex', flexDirection: 'column' }}>
                     <h3>Tags</h3>
                     <div style={{
@@ -142,7 +149,7 @@ function AlumniTools() {
                                 <span
                                     key={filter}
                                     style={{
-                                        backgroundColor: '#000',
+                                        backgroundColor: categoryColors[filter],
                                         color: '#fff',
                                         borderRadius: '3px',
                                         padding: '5px 10px',
@@ -189,25 +196,22 @@ function AlumniTools() {
                                             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
                                         }}
                                         onClick={() => handlePostClick(post)}>
-                                        {/* Display the image above the title */}
                                         <img src={post.imageUrl} alt={post.title} style={{ width: '100%', borderRadius: '10px', marginBottom: '10px' }} />
                                         <div className="flex items-center gap-x-4 text-xs">
                                             <time dateTime={post.datetime} className="text-gray-500">
                                                 {post.date}
                                             </time>
-                                            <a
-                                                href={post.category.href}
-                                                className="relative z-10 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
+                                            <span
                                                 style={{
-                                                    backgroundColor: '#f0f0f0',
+                                                    backgroundColor: categoryColors[post.category.title],
                                                     borderRadius: '15px',
                                                     padding: '5px 10px',
-                                                    color: '#333',
+                                                    color: '#fff',
                                                     marginLeft: '10px',
                                                 }}
                                             >
                                                 {post.category.title}
-                                            </a>
+                                            </span>
                                         </div>
                                         <div className="group relative">
                                             <h3 className="mt-3 text-lg font-semibold text-gray-900 group-hover:text-gray-600">
@@ -221,7 +225,10 @@ function AlumniTools() {
                                         <div className="relative mt-8 flex items-center gap-x-4">
                                             <div className="text-sm">
                                                 <p className="font-semibold text-gray-900">
-                                                    Posted by: {post.author}
+                                                    <a href={post.author.href}>
+                                                        <span className="absolute inset-0" />
+                                                        {post.author}
+                                                    </a>
                                                 </p>
                                             </div>
                                         </div>
@@ -234,20 +241,10 @@ function AlumniTools() {
             </div>
 
             {selectedPost && (
-                <Popup post={selectedPost} onClose={closePopup} />
+                <Popup isOpen={!!selectedPost} onClose={closePopup} post={selectedPost} />
             )}
-
             {isNewPostPopupOpen && (
-                <Popup onClose={closePopup} isNewPost>
-
-
-                    <form>
-                        <h2>New Post</h2>
-                        <input type="text" placeholder="Title" />
-                        <textarea placeholder="Description"></textarea>
-                        <button type="submit">Submit</button>
-                    </form>
-                </Popup>
+                <Popup isOpen={isNewPostPopupOpen} onClose={closePopup} />
             )}
         </div>
     );
