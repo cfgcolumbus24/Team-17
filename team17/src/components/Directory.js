@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import alumniData from './mockAlumniData.json';
-import FrontCard from './components/FrontCard';
-import './directory.css';
+import alumniData from '../mockAlumniData.json';
+import FrontCard from './FrontCard';
+import './Directory.css';
 import ReactCardFlip from 'react-card-flip';
-import BackCard from './components/BackCard';
+import BackCard from './BackCard';
 
 function Directory() {
     const [searchTerm, setSearchTerm] = useState(''); // State to hold the search term
