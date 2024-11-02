@@ -1,6 +1,6 @@
 package com.example.alumni_network.service;
 
-import com.example.alumni_network.PersonRepository.PersonRepository;
+import com.example.alumni_network.repo.PersonRepository; // Corrected import statement
 import com.example.alumni_network.model.Person;
 
 import org.springframework.beans.factory.annotation.Autowired;

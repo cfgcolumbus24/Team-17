@@ -6,7 +6,7 @@ VALUES
 ('Leo', 'Kim', 'Digital Art', 'leo.kim@example.com', 'https://leokimart.com', 'Seattle, WA', 'https://instagram.com/leokim'),
 ('Priya', 'Patel', 'Mixed Media', 'priya.patel@example.com', 'https://priyapatelart.com', 'Miami, FL', 'https://instagram.com/priyapatel');
 
-NSERT INTO residency (residency_name, residency_year)
+INSERT INTO residency (residency_name, residency_year)
 VALUES
 ('Creative Space NYC', 2021),
 ('Art Haven', 2020),
