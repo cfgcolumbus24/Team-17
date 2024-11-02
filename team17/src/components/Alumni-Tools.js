@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Popup from './Popup';
 
-function AlumniTools({ posts }) {
+function AlumniTools() {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [selectedPost, setSelectedPost] = useState(null);
@@ -21,68 +21,69 @@ function AlumniTools({ posts }) {
         );
     };
 
-    // const posts = [
-    //     {
-    //       id: 1,
-    //       title: 'Art Exhibit 11/1',
-    //       description: 'Looking for a friend on a new project!',
-    //       date: 'Nov 01, 2024',
-    //       datetime: '11/01/2024 06:31:08',
-    //       category: { title: 'Collaboration' },
-    //       author: 'Anand Joshi',
-    //     },
-    //     {
-    //         id: 2,
-    //         title: 'Showcase 11/3',
-    //         description: 'Come to my showcase in lower Manhattan on November 3rd!',
-    //         date: 'Oct 31, 2024',
-    //         datetime: '10/31/2024 12:29:08',
-    //         category: { title: 'Spotlight' },
-    //         author: 'John Doe',
-    //       },
-    //       {
-    //         id: 3,
-    //         title: 'Spotlight Artist: Maria Garcia',
-    //         description: 'This month we are celebrating a new and upcoming artist, Maria Garcia!',
-    //         date: 'Sept 14, 2024',
-    //         datetime: '09/14/2024 10:49:08',
-    //         category: { title: 'Spotlight' },
-    //         author: 'Zayn Malik',
-    //       },
-    //       {
-    //         id: 4,
-    //         title: 'Photography Workshop 11/12',
-    //         description: 'Join my photography workshop for beginners and intermediate levels.',
-    //         date: 'Oct 28, 2024',
-    //         datetime: '10/28/2024 08:19:42',
-    //         category: { title: 'Resources' },
-    //         author: 'Sophie Kim',
-    //       },
-    //   ];
+    const posts = [
+        {
+            id: 1,
+            title: 'Art Exhibit 11/1',
+            description: 'Looking for a friend on a new project!',
+            imageUrl: 'https://lmcc.net/wp-content/uploads/2024/10/MetPerspectives_MET_Paula_Lobo-04-12-7926-scaled.jpg',
+            date: 'Nov 01, 2024',
+            datetime: '11/01/2024 06:31:08',
+            category: { title: 'Collaboration' },
+            author: 'Anand Joshi',
+        },
+        {
+            id: 2,
+            title: 'Showcase 11/3',
+            description: 'Come to my showcase in lower Manhattan on November 3rd!',
+            imageUrl: 'https://lmcc.net/wp-content/uploads/2024/09/pink-1.jpeg',
+            date: 'Oct 31, 2024',
+            datetime: '10/31/2024 12:29:08',
+            category: { title: 'Spotlight' },
+            author: 'John Doe',
+        },
+        {
+            id: 3,
+            title: 'Spotlight Artist: Maria Garcia',
+            description: 'This month we are celebrating a new and upcoming artist, Maria Garcia!',
+            imageUrl: 'https://lmcc.net/wp-content/uploads/2024/10/she_walks_the_air_vi_1.jpeg',
+            date: 'Sept 14, 2024',
+            datetime: '09/14/2024 10:49:08',
+            category: { title: 'Spotlight' },
+            author: 'Zayn Malik',
+        },
+        {
+            id: 4,
+            title: 'Photography Workshop 11/12',
+            description: 'Join my photography workshop for beginners and intermediate levels.',
+            imageUrl: 'https://lmcc.net/wp-content/uploads/2024/08/PMTSpring15-25-scaled.jpg',
+            date: 'Oct 28, 2024',
+            datetime: '10/28/2024 08:19:42',
+            category: { title: 'Resources' },
+            author: 'Sophie Kim',
+        },
+    ];
 
-      const filteredPosts = posts.filter(post => {
+    const filteredPosts = posts.filter(post => {
         const matchesFilter = selectedFilters.length === 0 || selectedFilters.includes(post.category.title);
-        const matchesSearch = [post.title, post.description, post.author].some(text => 
+        const matchesSearch = [post.title, post.description, post.author].some(text =>
             text.toLowerCase().includes(searchTerm.toLowerCase())
         );
-        // const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-        //                       post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        //                       post.author.toLowerCase().includes(searchTerm.toLowerCase());
         return matchesFilter && matchesSearch;
-      });
-      
-      const handlePostClick = (post) => {
+    });
+
+    const handlePostClick = (post) => {
         setSelectedPost(post);
-      };
-    
-      const closePopup = () => {
+    };
+
+    const closePopup = () => {
         setSelectedPost(null);
         setIsNewPostPopupOpen(false);
-      };
+    };
 
-      const openNewPostPopup = () => {
+    const openNewPostPopup = () => {
         setIsNewPostPopupOpen(true);
-      };
+    };
 
     return (
         <div style={{ padding: '30px' }}>
@@ -122,7 +123,7 @@ function AlumniTools({ posts }) {
                     </div>
                 </form>
             </div>
-            
+
             <div style={{ display: 'flex', alignItems: 'flex-start' }}>
                 {/* Tags Box (Shows Selected Filters on the Left) */}
                 <div style={{ marginRight: '20px', padding: '10px', minWidth: '150px', display: 'flex', flexDirection: 'column' }}>
@@ -187,8 +188,9 @@ function AlumniTools({ posts }) {
                                             margin: '10px',
                                             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
                                         }}
-                                        // className="flex flex-col items-start justify-between bg-white p-4 shadow rounded-md"
                                         onClick={() => handlePostClick(post)}>
+                                        {/* Display the image above the title */}
+                                        <img src={post.imageUrl} alt={post.title} style={{ width: '100%', borderRadius: '10px', marginBottom: '10px' }} />
                                         <div className="flex items-center gap-x-4 text-xs">
                                             <time dateTime={post.datetime} className="text-gray-500">
                                                 {post.date}
@@ -237,6 +239,8 @@ function AlumniTools({ posts }) {
 
             {isNewPostPopupOpen && (
                 <Popup onClose={closePopup} isNewPost>
+
+
                     <form>
                         <h2>New Post</h2>
                         <input type="text" placeholder="Title" />
@@ -245,7 +249,6 @@ function AlumniTools({ posts }) {
                     </form>
                 </Popup>
             )}
-
         </div>
     );
 }
