@@ -17,25 +17,31 @@ function Navbar() {
 
             <ul className="navLinks">
                 <li
-                className={active === "Alumni Tools" ? "active" : ""}
-                onClick={() => handleSetActive("Alumni Tools")}
+                    className={active === "Alumni Tools" ? "active" : ""}
+                    onClick={() => handleSetActive("Alumni Tools")}
                 >
-                <a href="/tools">Alumni Tools</a>
+                    <a href="/tools">Alumni Tools</a>
                 </li>
                 <li
-                className={active === "Resources" ? "active" : ""}
-                onClick={() => handleSetActive("Resources")}
+                    className={active === "Resources" ? "active" : ""}
+                    onClick={() => handleSetActive("Resources")}
                 >
-                <a href="/resources">Resources</a>
+                    <a href="/resources">Resources</a>
                 </li>
                 <li
-                className={active === "Alumni Directory" ? "active" : ""}
-                onClick={() => handleSetActive("Alumni Directory")}
+                    className={active === "Alumni Directory" ? "active" : ""}
+                    onClick={() => handleSetActive("Alumni Directory")}
                 >
-                <a href="/directory">Alumni Directory</a>
+                    <a href="/directory">Alumni Directory</a>
                 </li>
-                <button className = "SignIn"> Sign In </button>
-                <button className = "SignOut"> Sign Out </button>
+
+                <li>
+                    <button className = "SignIn"> Sign In </button>
+                </li>
+                
+                <li>
+                    <button className = "SignOut"> Sign Out </button>
+                </li>
             </ul>
 
         </nav>
