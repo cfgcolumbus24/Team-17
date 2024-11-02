@@ -67,7 +67,7 @@ function AlumniTools() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '30px' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '20px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '20px' }}>
                 <div style={{ marginRight: '20px', paddingLeft: '30px' }}>
                     <h3>Tags</h3>
                     <div style={{
@@ -101,8 +101,8 @@ function AlumniTools() {
                     </div>
                 </div>
 
-                <div>
-                    <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center' }}>
                         <input
                             type="text"
                             placeholder="Search alumni tools..."
@@ -112,7 +112,7 @@ function AlumniTools() {
                                 padding: '10px',
                                 fontSize: '16px',
                                 width: '250px',
-                                marginRight: '10px',
+                                marginRight: '20px',
                             }}
                         />
                         
