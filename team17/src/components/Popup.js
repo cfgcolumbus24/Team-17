@@ -2,13 +2,22 @@ import React, { useState } from 'react';
 import './Popup.css';
 
 function Popup({ post, onClose }) {
-    const [isRSVPed, setIsRSVPed] = useState(false);
-    const [attendees, setAttendees] = useState([]);
+    const [isRSVPed, setIsRSVPed] = useState(false); // for alumni event posts
+    const [attendees, setAttendees] = useState([]); // for alumni event posts
+    const [isInterested, setIsInterested] = useState(false); // for collaboration posts
+    const [interestedAttendees, setInterestedAttendees] = useState([]); // for collaboration posts
 
     const handleRSVP = () => {
         if (!isRSVPed) {
             setAttendees([...attendees, "You"]);
             setIsRSVPed(true);
+        }
+    };
+
+    const handleInterest = () => {
+        if (!isInterested) {
+            setInterestedAttendees([...interestedAttendees, "You"]);
+            setIsInterested(true);
         }
     };
 
@@ -49,6 +58,40 @@ function Popup({ post, onClose }) {
                                 ))
                             ) : (
                                 <li>No one has RSVP'd yet.</li> // Display message if no attendees
+                            )}
+                        </ul>
+                    </div>
+                )}
+
+{post.category.title === "Collaboration" && (
+                    <div style={{ marginTop: '20px' }}>
+                        <button 
+                            onClick={handleInterest} 
+                            disabled={isInterested} 
+                            style={{
+                                padding: '10px 15px',
+                                fontSize: '16px',
+                                backgroundColor: isInterested ? '#ddd' : '#28a745',
+                                color: '#fff',
+                                border: 'none',
+                                borderRadius: '5px',
+                                cursor: isInterested ? 'default' : 'pointer',
+                                marginBottom: '10px'
+                            }}
+                        >
+                            {isInterested ? "I'm Interested" : "I'm Interested"}
+                        </button>
+                        
+                        <h3>Currently Interested:</h3>
+                        <ul style={{ listStyle: 'none', padding: 0 }}>
+                            {interestedAttendees.length > 0 ? (
+                                interestedAttendees.map((attendee, index) => (
+                                    <li key={index} style={{ marginBottom: '5px' }}>
+                                        {attendee}
+                                    </li>
+                                ))
+                            ) : (
+                                <li>No one has shown interest yet.</li>
                             )}
                         </ul>
                     </div>
