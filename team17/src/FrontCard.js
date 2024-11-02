@@ -1,13 +1,14 @@
 // Card.js
 import React from 'react';
-import './Card.css';
+import './FrontCard.css';
 import { GrMail } from "react-icons/gr";
 import { SiInstagram } from "react-icons/si";
 
-
-const Card = ({ first_name, last_name, residency_name, image_url, residency_year, email, instagram_url }) => {
+/* Card for the Alumni Directory */
+const FrontCard = ({ first_name, last_name, residency_name, image_url, residency_year, email, instagram_url }) => {
     return (
-      <div className="card">
+      <div class = "card">
+      <div>
         <img 
           src={image_url} 
           alt={`${first_name} ${last_name}`} 
@@ -22,7 +23,8 @@ const Card = ({ first_name, last_name, residency_name, image_url, residency_year
           </div>
         </div>
       </div>
+      </div>
     );
 };
 
-export default Card;
+export default FrontCard;
