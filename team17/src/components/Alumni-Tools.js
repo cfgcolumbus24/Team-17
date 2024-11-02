@@ -20,7 +20,7 @@ function AlumniTools({ posts }) {
                 : [...prevFilters, filter]
         );
     };
-
+    
     // const posts = [
     //     {
     //       id: 1,

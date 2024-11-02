@@ -37,7 +37,6 @@ function Popup({ post, onClose, isNewPost }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle new post submission
         console.log("New post submitted:", newPostData);
         onClose();
     };
