@@ -1,10 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Popup from './Popup';
+import postsData from '../mockPostData.json';
 
-function AlumniTools({ posts }) {
+function AlumniTools() {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [selectedPost, setSelectedPost] = useState(null);
+    const [isNewPostPopupOpen, setIsNewPostPopupOpen] = useState(false);
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        const storedPosts = JSON.parse(localStorage.getItem('posts'));
+        if (storedPosts) {
+            setPosts(storedPosts);
+        } else {
+            setPosts(postsData);
+        }
+    }, []);
+
+    const [newPostData, setNewPostData] = useState({
+        title: '',
+        description: '',
+        category: '',
+        author: 'Guest',
+        imageUrl: ''
+    });
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -20,63 +40,93 @@ function AlumniTools({ posts }) {
         );
     };
 
-    // const posts = [
-    //     {
-    //       id: 1,
-    //       title: 'Art Exhibit 11/1',
-    //       description: 'Looking for a friend on a new project!',
-    //       date: 'Nov 01, 2024',
-    //       datetime: '11/01/2024 06:31:08',
-    //       category: { title: 'Collaboration' },
-    //       author: 'Anand Joshi',
-    //     },
-    //     {
-    //         id: 2,
-    //         title: 'Showcase 11/3',
-    //         description: 'Come to my showcase in lower Manhattan on November 3rd!',
-    //         date: 'Oct 31, 2024',
-    //         datetime: '10/31/2024 12:29:08',
-    //         category: { title: 'Spotlight' },
-    //         author: 'John Doe',
-    //       },
-    //       {
-    //         id: 3,
-    //         title: 'Spotlight Artist: Maria Garcia',
-    //         description: 'This month we are celebrating a new and upcoming artist, Maria Garcia!',
-    //         date: 'Sept 14, 2024',
-    //         datetime: '09/14/2024 10:49:08',
-    //         category: { title: 'Spotlight' },
-    //         author: 'Zayn Malik',
-    //       },
-    //       {
-    //         id: 4,
-    //         title: 'Photography Workshop 11/12',
-    //         description: 'Join my photography workshop for beginners and intermediate levels.',
-    //         date: 'Oct 28, 2024',
-    //         datetime: '10/28/2024 08:19:42',
-    //         category: { title: 'Resources' },
-    //         author: 'Sophie Kim',
-    //       },
-    //   ];
+    const categoryColors = {
+        'Collaboration': '#1e90ff',
+        'Spotlight': '#ff69b4',
+        'Alumni Event': '#32cd32',
+        'Resources': '#ffa500'
+    };
 
-      const filteredPosts = posts.filter(post => {
+    const filteredPosts = posts.filter(post => {
         const matchesFilter = selectedFilters.length === 0 || selectedFilters.includes(post.category.title);
-        const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                              post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                              post.author.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesSearch = [post.title, post.description, post.author].some(text =>
+            text.toLowerCase().includes(searchTerm.toLowerCase())
+        );
         return matchesFilter && matchesSearch;
-      });
-      
-      const handlePostClick = (post) => {
+    });
+
+    const handlePostClick = (post) => {
         setSelectedPost(post);
-      };
-    
-      const closePopup = () => {
+    };
+
+    const closePopup = () => {
         setSelectedPost(null);
-      };
+        setIsNewPostPopupOpen(false);
+    };
+
+    const openNewPostPopup = () => {
+        setIsNewPostPopupOpen(true);
+    };
+
+    const handleNewPostChange = (e) => {
+        const { name, value } = e.target;
+        setNewPostData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
+
+    const handleNewPostSubmit = (e) => {
+        e.preventDefault();
+        const newPost = {
+            ...newPostData,
+            id: posts.length + 1,
+            date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+            datetime: new Date().toISOString(),
+            category: { title: newPostData.category }
+        };
+
+        const updatedPosts = [...posts, newPost];
+        setPosts(updatedPosts);
+
+        localStorage.setItem('posts', JSON.stringify(updatedPosts));
+
+        setNewPostData({ title: '', description: '', category: '', author: 'Guest', imageUrl: '' });
+        closePopup();
+    };
 
     return (
         <div style={{ padding: '30px' }}>
+            {/* Header Section */}
+            <div style={{ position: 'relative', marginBottom: '20px' }}>
+                <img
+                    src="https://lmcc.net/wp-content/uploads/2024/10/MetPerspectives_MET_Paula_Lobo-04-12-7926-scaled.jpg"
+                    alt="Header Background"
+                    style={{
+                        width: '100%',
+                        height: '300px',
+                        objectFit: 'cover',
+                        filter: 'brightness(0.5)',
+                        borderRadius: '15px'
+                    }}
+                />
+                <div style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    color: '#fff',
+                    fontSize: '40px',
+                    fontWeight: 'bold',
+                    padding: '15px',
+                    borderRadius: '10px',
+                    textAlign: 'center'
+                }}>
+                    Explore our Alumni Tools
+                </div>
+            </div>
+
+            {/* Search and Filter Section */}
             <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '20px' }}>
                 <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center', width: '100%', maxWidth: '800px' }}>
                     <input
@@ -88,7 +138,7 @@ function AlumniTools({ posts }) {
                             padding: '10px',
                             fontSize: '16px',
                             width: '250px',
-                            marginRight: '20px',
+                            marginRight: '20px'
                         }}
                     />
                     <div style={{ display: 'flex', gap: '10px' }}>
@@ -100,11 +150,11 @@ function AlumniTools({ posts }) {
                                 style={{
                                     padding: '10px 15px',
                                     fontSize: '16px',
-                                    backgroundColor: selectedFilters.includes(filter) ? '#000' : '#e0e0e0',
+                                    backgroundColor: selectedFilters.includes(filter) ? categoryColors[filter] : '#e0e0e0',
                                     color: selectedFilters.includes(filter) ? '#fff' : '#000',
                                     border: 'none',
                                     borderRadius: '5px',
-                                    cursor: 'pointer',
+                                    cursor: 'pointer'
                                 }}
                             >
                                 {filter}
@@ -113,103 +163,53 @@ function AlumniTools({ posts }) {
                     </div>
                 </form>
             </div>
-            
-            <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-                {/* Tags Box (Shows Selected Filters on the Left) */}
-                <div style={{ marginRight: '20px', padding: '10px', minWidth: '150px', display: 'flex', flexDirection: 'column' }}>
-                    <h3>Tags</h3>
-                    <div style={{
-                        border: '1px solid #ccc',
-                        borderRadius: '5px',
-                        padding: '10px',
-                        minHeight: '50px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                    }}>
-                        {selectedFilters.length > 0 ? (
-                            selectedFilters.map((filter) => (
-                                <span
-                                    key={filter}
-                                    style={{
-                                        backgroundColor: '#000',
-                                        color: '#fff',
-                                        borderRadius: '3px',
-                                        padding: '5px 10px',
-                                        margin: '5px 0',
-                                    }}
-                                >
-                                    {filter}
-                                </span>
-                            ))
-                        ) : (
-                            <span>No selected filters</span>
-                        )}
-                    </div>
-                </div>
 
-                <div style={{ flex: 1 }}>
-                    <div className="bg-white py-24 sm:py-32">
-                        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', justifyItems: 'stretch' }}>
-                                {filteredPosts.map((post) => (
-                                    <article
-                                        key={post.id}
-                                        style={{
-                                            boxSizing: 'border-box',
-                                            minHeight: '200px',
-                                            borderRadius: '15px',
-                                            padding: '15px',
-                                            margin: '10px',
-                                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-                                        }}
-                                        className="flex flex-col items-start justify-between bg-white p-4 shadow rounded-md"
-                                        onClick={() => handlePostClick(post)}>
-                                        <div className="flex items-center gap-x-4 text-xs">
-                                            <time dateTime={post.datetime} className="text-gray-500">
-                                                {post.date}
-                                            </time>
-                                            <a
-                                                href={post.category.href}
-                                                className="relative z-10 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
-                                                style={{
-                                                    backgroundColor: '#f0f0f0',
-                                                    borderRadius: '15px',
-                                                    padding: '5px 10px',
-                                                    color: '#333',
-                                                    marginLeft: '10px',
-                                                }}
-                                            >
-                                                {post.category.title}
-                                            </a>
-                                        </div>
-                                        <div className="group relative">
-                                            <h3 className="mt-3 text-lg font-semibold text-gray-900 group-hover:text-gray-600">
-                                                <a href={post.href}>
-                                                    <span className="absolute inset-0" />
-                                                    {post.title}
-                                                </a>
-                                            </h3>
-                                            <p className="mt-5 text-sm text-gray-600 line-clamp-3">{post.description}</p>
-                                        </div>
-                                        <div className="relative mt-8 flex items-center gap-x-4">
-                                            <div className="text-sm">
-                                                <p className="font-semibold text-gray-900">
-                                                    Posted by: {post.author}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </article>
-                                ))}
-                            </div>
+            {/* Responsive Grid Section */}
+            <div className="grid-container" style={{ display: 'grid', gap: '20px', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', justifyItems: 'stretch' }}>
+                {filteredPosts.map((post) => (
+                    <article
+                        key={post.id}
+                        style={{
+                            borderRadius: '15px',
+                            padding: '15px',
+                            margin: '10px',
+                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                            backgroundColor: '#fff'
+                        }}
+                        onClick={() => handlePostClick(post)}>
+                        <img src={post.imageUrl} alt={post.title} style={{ width: '100%', borderRadius: '10px', marginBottom: '10px' }} />
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                            <time style={{ color: '#777', fontSize: '14px' }}>{post.date}</time>
+                            <h3 style={{ fontSize: '20px', margin: '10px 0 5px 0' }}>{post.title}</h3>
+                            <p style={{ fontSize: '16px', color: '#555' }}>{post.description}</p>
+                            <span style={{
+                                marginTop: '5px',
+                                fontSize: '14px',
+                                fontWeight: 'bold',
+                                color: categoryColors[post.category.title]
+                            }}>
+                                {post.category.title}
+                            </span>
                         </div>
-                    </div>
-                </div>
+                    </article>
+                ))}
             </div>
 
-            {selectedPost && (
-                <Popup post={selectedPost} onClose={closePopup} />
+            {/* Popups */}
+            {selectedPost && <Popup post={selectedPost} onClose={closePopup} isNewPost={false} />}
+            {isNewPostPopupOpen && (
+                <Popup onClose={closePopup} isNewPost={true}>
+                    <form onSubmit={handleNewPostSubmit}>
+                        <h2>New Post</h2>
+                        <input type="text" name="title" placeholder="Title" value={newPostData.title} onChange={handleNewPostChange} required />
+                        <textarea name="description" placeholder="Description" value={newPostData.description} onChange={handleNewPostChange} required />
+                        <input type="text" name="category" placeholder="Category" value={newPostData.category} onChange={handleNewPostChange} required />
+                        <input type="text" name="author" placeholder="Author" value={newPostData.author} onChange={handleNewPostChange} required />
+                        <input type="text" name="imageUrl" placeholder="Image URL" value={newPostData.imageUrl} onChange={handleNewPostChange} />
+                        <button type="submit">Submit</button>
+                    </form>
+                </Popup>
             )}
-
         </div>
     );
 }

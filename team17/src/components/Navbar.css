@@ -4,12 +4,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: white;
-    color: black;
+    background-color: #37c1f3;
+    color: white;
   }
   
   .navbar-logo a {
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 1.5rem;
   }
@@ -21,12 +21,12 @@
   }
   
   .navLinks li a {
-    color: black;
+    color: white;
     text-decoration: none;
   }
   
   .navLinks li a:hover {
-    color: blue;
+    color: rgb(231, 231, 231);
   }
 
   .navLinks button {
@@ -51,4 +51,11 @@
     height: 70px;
     width: auto;
     margin: 5px;
+  }
+
+  .navbar-title {
+    margin-left: 60px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
   }
