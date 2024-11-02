@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import Popup from './Popup';
 
-function AlumniTools() {
+function AlumniTools({ posts }) {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedFilters, setSelectedFilters] = useState([]);
+    const [selectedPost, setSelectedPost] = useState(null);
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -18,44 +20,44 @@ function AlumniTools() {
         );
     };
 
-    const posts = [
-        {
-          id: 1,
-          title: 'Art Exhibit 11/1',
-          description: 'Looking for a friend on a new project!',
-          date: 'Nov 01, 2024',
-          datetime: '11/01/2024 06:31:08',
-          category: { title: 'Collaboration' },
-          author: 'Anand Joshi',
-        },
-        {
-            id: 2,
-            title: 'Showcase 11/3',
-            description: 'Come to my showcase in lower Manhattan on November 3rd!',
-            date: 'Oct 31, 2024',
-            datetime: '10/31/2024 12:29:08',
-            category: { title: 'Spotlight' },
-            author: 'John Doe',
-          },
-          {
-            id: 3,
-            title: 'Spotlight Artist: Maria Garcia',
-            description: 'This month we are celebrating a new and upcoming artist, Maria Garcia!',
-            date: 'Sept 14, 2024',
-            datetime: '09/14/2024 10:49:08',
-            category: { title: 'Spotlight' },
-            author: 'Zayn Malik',
-          },
-          {
-            id: 4,
-            title: 'Photography Workshop 11/12',
-            description: 'Join my photography workshop for beginners and intermediate levels.',
-            date: 'Oct 28, 2024',
-            datetime: '10/28/2024 08:19:42',
-            category: { title: 'Resources' },
-            author: 'Sophie Kim',
-          },
-      ];
+    // const posts = [
+    //     {
+    //       id: 1,
+    //       title: 'Art Exhibit 11/1',
+    //       description: 'Looking for a friend on a new project!',
+    //       date: 'Nov 01, 2024',
+    //       datetime: '11/01/2024 06:31:08',
+    //       category: { title: 'Collaboration' },
+    //       author: 'Anand Joshi',
+    //     },
+    //     {
+    //         id: 2,
+    //         title: 'Showcase 11/3',
+    //         description: 'Come to my showcase in lower Manhattan on November 3rd!',
+    //         date: 'Oct 31, 2024',
+    //         datetime: '10/31/2024 12:29:08',
+    //         category: { title: 'Spotlight' },
+    //         author: 'John Doe',
+    //       },
+    //       {
+    //         id: 3,
+    //         title: 'Spotlight Artist: Maria Garcia',
+    //         description: 'This month we are celebrating a new and upcoming artist, Maria Garcia!',
+    //         date: 'Sept 14, 2024',
+    //         datetime: '09/14/2024 10:49:08',
+    //         category: { title: 'Spotlight' },
+    //         author: 'Zayn Malik',
+    //       },
+    //       {
+    //         id: 4,
+    //         title: 'Photography Workshop 11/12',
+    //         description: 'Join my photography workshop for beginners and intermediate levels.',
+    //         date: 'Oct 28, 2024',
+    //         datetime: '10/28/2024 08:19:42',
+    //         category: { title: 'Resources' },
+    //         author: 'Sophie Kim',
+    //       },
+    //   ];
 
       const filteredPosts = posts.filter(post => {
         const matchesFilter = selectedFilters.length === 0 || selectedFilters.includes(post.category.title);
@@ -64,6 +66,14 @@ function AlumniTools() {
                               post.author.toLowerCase().includes(searchTerm.toLowerCase());
         return matchesFilter && matchesSearch;
       });
+      
+      const handlePostClick = (post) => {
+        setSelectedPost(post);
+      };
+    
+      const closePopup = () => {
+        setSelectedPost(null);
+      };
 
     return (
         <div style={{ padding: '30px' }}>
@@ -152,7 +162,8 @@ function AlumniTools() {
                                             margin: '10px',
                                             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
                                         }}
-                                        className="flex flex-col items-start justify-between bg-white p-4 shadow rounded-md">
+                                        className="flex flex-col items-start justify-between bg-white p-4 shadow rounded-md"
+                                        onClick={() => handlePostClick(post)}>
                                         <div className="flex items-center gap-x-4 text-xs">
                                             <time dateTime={post.datetime} className="text-gray-500">
                                                 {post.date}
@@ -194,6 +205,11 @@ function AlumniTools() {
                     </div>
                 </div>
             </div>
+
+            {selectedPost && (
+                <Popup post={selectedPost} onClose={closePopup} />
+            )}
+
         </div>
     );
 }
