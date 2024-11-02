@@ -5,6 +5,7 @@ function AlumniTools({ posts }) {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [selectedPost, setSelectedPost] = useState(null);
+    const [isNewPostPopupOpen, setIsNewPostPopupOpen] = useState(false);
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -61,9 +62,12 @@ function AlumniTools({ posts }) {
 
       const filteredPosts = posts.filter(post => {
         const matchesFilter = selectedFilters.length === 0 || selectedFilters.includes(post.category.title);
-        const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                              post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                              post.author.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesSearch = [post.title, post.description, post.author].some(text => 
+            text.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        // const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        //                       post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        //                       post.author.toLowerCase().includes(searchTerm.toLowerCase());
         return matchesFilter && matchesSearch;
       });
       
@@ -73,6 +77,11 @@ function AlumniTools({ posts }) {
     
       const closePopup = () => {
         setSelectedPost(null);
+        setIsNewPostPopupOpen(false);
+      };
+
+      const openNewPostPopup = () => {
+        setIsNewPostPopupOpen(true);
       };
 
     return (
@@ -125,6 +134,7 @@ function AlumniTools({ posts }) {
                         minHeight: '50px',
                         display: 'flex',
                         flexDirection: 'column',
+                        marginBottom: '20px',
                     }}>
                         {selectedFilters.length > 0 ? (
                             selectedFilters.map((filter) => (
@@ -145,6 +155,21 @@ function AlumniTools({ posts }) {
                             <span>No selected filters</span>
                         )}
                     </div>
+
+                    <button
+                        onClick={openNewPostPopup}
+                        style={{
+                            padding: '10px 15px',
+                            fontSize: '16px',
+                            backgroundColor: '#e0e0e0',
+                            color: '#000',
+                            border: 'none',
+                            borderRadius: '5px',
+                            cursor: 'pointer',
+                        }}
+                    >
+                        Make a New Post
+                    </button>
                 </div>
 
                 <div style={{ flex: 1 }}>
@@ -162,7 +187,7 @@ function AlumniTools({ posts }) {
                                             margin: '10px',
                                             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
                                         }}
-                                        className="flex flex-col items-start justify-between bg-white p-4 shadow rounded-md"
+                                        // className="flex flex-col items-start justify-between bg-white p-4 shadow rounded-md"
                                         onClick={() => handlePostClick(post)}>
                                         <div className="flex items-center gap-x-4 text-xs">
                                             <time dateTime={post.datetime} className="text-gray-500">
@@ -208,6 +233,17 @@ function AlumniTools({ posts }) {
 
             {selectedPost && (
                 <Popup post={selectedPost} onClose={closePopup} />
+            )}
+
+            {isNewPostPopupOpen && (
+                <Popup onClose={closePopup} isNewPost>
+                    <form>
+                        <h2>New Post</h2>
+                        <input type="text" placeholder="Title" />
+                        <textarea placeholder="Description"></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                </Popup>
             )}
 
         </div>
