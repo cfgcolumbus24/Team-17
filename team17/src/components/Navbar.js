@@ -18,6 +18,8 @@ function Navbar() {
                 </a>
             </div>
 
+            <h1 className='navbar-title'>AlumConnect</h1>
+
             <ul className="navLinks">
                 <li
                     className={active === "Alumni Tools" ? "active" : ""}
