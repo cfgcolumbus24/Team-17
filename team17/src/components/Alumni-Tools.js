@@ -8,13 +8,6 @@ function AlumniTools() {
         setSearchTerm(event.target.value);
     };
 
-    const handleSearchSubmit = (event) => {
-        event.preventDefault();
-        console.log("Searched for:", searchTerm);
-        console.log("Selected filters:", selectedFilters);
-        // Add logic for search term and filter buttons here integrating cards
-    };
-
     const filters = ['Collaboration', 'Spotlight', 'Alumni Event', 'Resources'];
 
     const toggleFilter = (filter) => {
@@ -64,9 +57,13 @@ function AlumniTools() {
           },
       ]
 
-      const filteredPosts = selectedFilters.length > 0
-        ? posts.filter(post => selectedFilters.includes(post.category.title))
-        : posts;
+      const filteredPosts = posts.filter(post => {
+        const matchesFilter = selectedFilters.length === 0 || selectedFilters.includes(post.category.title);
+        const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                              post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                              post.author.toLowerCase().includes(searchTerm.toLowerCase());
+        return matchesFilter && matchesSearch;
+      });
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '30px' }}>
@@ -105,7 +102,7 @@ function AlumniTools() {
                 </div>
 
                 <div>
-                    <form onSubmit={handleSearchSubmit} style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+                    <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
                         <input
                             type="text"
                             placeholder="Search alumni tools..."
@@ -118,9 +115,6 @@ function AlumniTools() {
                                 marginRight: '10px',
                             }}
                         />
-                        <button type="submit" style={{ padding: '10px 15px', fontSize: '16px', marginRight: '15px' }}>
-                            Search
-                        </button>
                         
                         <div style={{ display: 'flex', gap: '10px' }}>
                             {filters.map((filter) => (
@@ -181,12 +175,8 @@ function AlumniTools() {
                                 <div className="relative mt-8 flex items-center gap-x-4">
                                     <div className="text-sm">
                                         <p className="font-semibold text-gray-900">
-                                            <a href={post.author.href}>
-                                                <span className="absolute inset-0" />
-                                                {post.author.name}
-                                            </a>
+                                            Posted by: {post.author}
                                         </p>
-                                        <p className="text-gray-600">{post.author.role}</p>
                                     </div>
                                 </div>
                             </article>
