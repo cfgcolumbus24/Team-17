@@ -1,44 +1,22 @@
-import React from 'react';
-import './Navbar.css';
-import { useState } from 'react';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Navbar() {
-    const [active, setActive] = useState("Alumni Tools");
 
-    const handleSetActive = (page) => {
-      setActive(page);
-    }
 
-    return(
-        <nav className = "navbar">
-            <div className="logo">
-                <a href= "/">
-                    <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Logo" />
-                </a>
-            </div>
-
-            <ul className="navLinks">
-                <li
-                    className={active === "Alumni Tools" ? "active" : ""}
-                    onClick={() => handleSetActive("Alumni Tools")}
-                >
-                    <a href="/tools">Alumni Tools</a>
-                </li>
-                <li
-                    className={active === "Resources" ? "active" : ""}
-                    onClick={() => handleSetActive("Resources")}
-                >
-                    <a href="/resources">Resources</a>
-                </li>
-                <li
-                    className={active === "Alumni Directory" ? "active" : ""}
-                    onClick={() => handleSetActive("Alumni Directory")}
-                >
-                    <a href="/">Alumni Directory</a>
-                </li>
-            </ul>
-
-        </nav>
-    );
+function ColorSchemesExample() {
+  return (
+      <Navbar bg="dark" data-bs-theme="dark">
+        <Container>
+          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Posts</Nav.Link>
+            <Nav.Link href="#features">Alumni Directory</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+  );
 }
-export default Navbar;
+
+export default ColorSchemesExample;
