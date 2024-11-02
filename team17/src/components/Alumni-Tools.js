@@ -95,6 +95,34 @@ function AlumniTools() {
 
     return (
         <div style={{ padding: '30px' }}>
+            <div style={{ position: 'relative', marginBottom: '20px' }}>
+                <img
+                    src="https://lmcc.net/wp-content/uploads/2024/10/MetPerspectives_MET_Paula_Lobo-04-12-7926-scaled.jpg"
+                    alt="Header Background"
+                    style={{
+                        width: '100%',
+                        height: '300px',
+                        objectFit: 'cover',
+                        filter: 'brightness(0.5)',
+                        borderRadius: '15px'
+                    }}
+                />
+                <div style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    color: '#fff',
+                    fontSize: '40px', // Increased font size
+                    fontWeight: 'bold', // Added bold style
+                    padding: '15px',
+                    borderRadius: '10px',
+                    textAlign: 'center'
+                }}>
+                    Explore our Alumni Tools
+                </div>
+            </div>
+
             <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '20px' }}>
                 <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center', width: '100%', maxWidth: '800px' }}>
                     <input
@@ -134,7 +162,7 @@ function AlumniTools() {
 
             <div style={{ display: 'flex', alignItems: 'flex-start' }}>
                 <div style={{ marginRight: '20px', padding: '10px', minWidth: '150px', display: 'flex', flexDirection: 'column' }}>
-                    <h3>Tags</h3>
+                    <h3 style={{ fontSize: '20px' }}>Tags</h3> {/* Increased font size */}
                     <div style={{
                         border: '1px solid #ccc',
                         borderRadius: '5px',
@@ -154,6 +182,7 @@ function AlumniTools() {
                                         borderRadius: '3px',
                                         padding: '5px 10px',
                                         margin: '5px 0',
+                                        fontSize: '16px', // Increased font size
                                     }}
                                 >
                                     {filter}
@@ -197,40 +226,21 @@ function AlumniTools() {
                                         }}
                                         onClick={() => handlePostClick(post)}>
                                         <img src={post.imageUrl} alt={post.title} style={{ width: '100%', borderRadius: '10px', marginBottom: '10px' }} />
-                                        <div className="flex items-center gap-x-4 text-xs">
-                                            <time dateTime={post.datetime} className="text-gray-500">
-                                                {post.date}
-                                            </time>
+                                        <div className="flex items-center gap-x-4">
+                                            <div style={{ flex: 1 }}>
+                                                <h3 style={{ fontSize: '20px' }}>{post.title}</h3> {/* Increased font size */}
+                                                <p style={{ fontSize: '16px' }}>{post.description}</p> {/* Increased font size */}
+                                                <p style={{ fontSize: '14px', color: '#777' }}>{post.date}</p> {/* Increased font size */}
+                                            </div>
                                             <span
                                                 style={{
-                                                    backgroundColor: categoryColors[post.category.title],
-                                                    borderRadius: '15px',
-                                                    padding: '5px 10px',
-                                                    color: '#fff',
-                                                    marginLeft: '10px',
+                                                    fontSize: '12px',
+                                                    fontWeight: 'bold',
+                                                    color: categoryColors[post.category.title],
                                                 }}
                                             >
                                                 {post.category.title}
                                             </span>
-                                        </div>
-                                        <div className="group relative">
-                                            <h3 className="mt-3 text-lg font-semibold text-gray-900 group-hover:text-gray-600">
-                                                <a href={post.href}>
-                                                    <span className="absolute inset-0" />
-                                                    {post.title}
-                                                </a>
-                                            </h3>
-                                            <p className="mt-5 text-sm text-gray-600 line-clamp-3">{post.description}</p>
-                                        </div>
-                                        <div className="relative mt-8 flex items-center gap-x-4">
-                                            <div className="text-sm">
-                                                <p className="font-semibold text-gray-900">
-                                                    <a href={post.author.href}>
-                                                        <span className="absolute inset-0" />
-                                                        {post.author}
-                                                    </a>
-                                                </p>
-                                            </div>
                                         </div>
                                     </article>
                                 ))}
@@ -241,10 +251,10 @@ function AlumniTools() {
             </div>
 
             {selectedPost && (
-                <Popup isOpen={!!selectedPost} onClose={closePopup} post={selectedPost} />
+                <Popup post={selectedPost} onClose={closePopup} />
             )}
             {isNewPostPopupOpen && (
-                <Popup isOpen={isNewPostPopupOpen} onClose={closePopup} />
+                <Popup post={{ title: '', description: '', category: {} }} onClose={closePopup} />
             )}
         </div>
     );
