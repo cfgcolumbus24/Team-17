@@ -1,3 +1,5 @@
+
+
 .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust the minmax value as needed */
@@ -5,17 +7,15 @@
     padding: 20px;
   }
   
-  h1 {
-    text-align: center;
-    margin: 20px 0;
-  }
 
 /* Style for the search container */
 .search-container {
     display: flex;                  /* Use flexbox for alignment */
-    justify-content: right;        /* Center the input */
+    justify-content: left;        /* Center the input */
     margin: 20px 0;                /* Margin above and below */
-    margin-right: 20px;
+    margin-right: 10px;
+    margin-left: 28px
+    ;
   }
   
   /* Style for the search input */
@@ -85,4 +85,11 @@
     color: #333;
   }
 
-  
+  h1 {
+    text-align: left;
+    margin-left: 30px;
+}
+
+input, select {
+    text-align: left;
+}

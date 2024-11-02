@@ -1,20 +1,3 @@
-.card {
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    margin: 16px;
-    text-align: center;
-    width: 250px;
-    height: 350px;
-  }
-  
-  .card-image {
-    margin-top:15px;
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-  }
-  
   .card-content {
     padding: 16px;
   }
@@ -39,12 +22,6 @@
     gap: 8px; 
   }
   
-  .card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    text-align: center; 
-  }
   
   .circular-image {
     width: 200px; 
@@ -60,4 +37,36 @@
       margin-top: 0.2rem; 
   }
 
+  .card {
+    display: flex;                     /* Use flexbox for card layout */
+    flex-direction: column;            /* Stack children vertically */
+    align-items: center;               /* Center children horizontally */
+    justify-content: center;           /* Center children vertically */
+    border: 1px solid #ddd;           /* Optional: add a border */
+    border-radius: 10px;              /* Optional: add rounded corners */
+    padding: 20px;                    /* Optional: add some padding */
+    text-align: center;                /* Center text content */
+    width: 250px;                     /* Set a fixed width for the card */
+    margin: 10px;           
+    height: 300px;         
+}
 
+.card-image {
+    width: 100px;                     /* Set the desired width for the image */
+    height: 100px;                    /* Set a fixed height for the image */
+    object-fit: cover;                /* Ensure the image covers the space */
+    border-radius: 50%;               /* Make the image circular */
+    margin-bottom: 10px;              /* Add margin below the image */
+}
+
+.card-content {
+    display: flex;                    /* Optional: flexbox for content */
+    flex-direction: column;           /* Stack content vertically */
+    align-items: center;              /* Center content horizontally */
+}
+
+.card-icons {
+    display: flex;                    /* Flexbox for icons */
+    justify-content: center;          /* Center icons */
+    margin-top: 10px;                /* Optional: add space above icons */
+}
