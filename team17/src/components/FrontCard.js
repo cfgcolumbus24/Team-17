@@ -8,7 +8,6 @@ import { SiInstagram } from "react-icons/si"; // Importing the Instagram icon fr
 const FrontCard = ({ first_name, last_name, residency_name, image_url, residency_year, email, instagram_url }) => {
     return (
       <div className="card"> 
-        <div>
           <img 
             src={image_url} 
             alt={`${first_name} ${last_name}`}  
@@ -26,7 +25,6 @@ const FrontCard = ({ first_name, last_name, residency_name, image_url, residency
               </a>
             </div>
           </div>
-        </div>
       </div>
     );
 };

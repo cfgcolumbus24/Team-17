@@ -1,176 +1,169 @@
-[
-
+[{
+  "alumni": [
     {
-      "alumni": [
-        {
-          "id": 1,
-          "name": "Anand Joshi",
-          "email": "anandjoshi@gmail.com",
-          "portfolio_link": "www.anandjoshi.com",
-          "location": "New York, NY",
-          "residency": "Residency 1"
-        },
-        {
-          "id": 2,
-          "name": "Sarah Mitchell",
-          "email": "sarahmitchell@gmail.com",
-          "portfolio_link": "www.sarahmitchell.com",
-          "location": "San Francisco, CA",
-          "residency": "Residency 2"
-        },
-        {
-          "id": 3,
-          "name": "James Chen",
-          "email": "jameschen@gmail.com",
-          "portfolio_link": "www.jameschen.io",
-          "location": "Seattle, WA",
-          "residency": "Residency 3"
-        },
-        {
-          "id": 4,
-          "name": "Maria Garcia",
-          "email": "mariagarcia@gmail.com",
-          "portfolio_link": "www.mariagarcia.net",
-          "location": "Miami, FL",
-          "residency": "Residency 1"
-        },
-        {
-          "id": 5,
-          "name": "Robert Kim",
-          "email": "robertkim@gmail.com",
-          "portfolio_link": "www.robertkim.dev",
-          "location": "Chicago, IL",
-          "residency": "Residency 2"
-        },
-        {
-          "id": 6,
-          "name": "Emily Johnson",
-          "email": "emilyjohnson@gmail.com",
-          "portfolio_link": "www.emilyjohnson.design",
-          "location": "Austin, TX",
-          "residency": "Residency 3"
-        },
-        {
-          "id": 7,
-          "name": "Michael Patel",
-          "email": "michaelpatel@gmail.com",
-          "portfolio_link": "www.michaelpatel.co",
-          "location": "Boston, MA",
-          "residency": "Residency 1"
-        },
-        {
-          "id": 8,
-          "name": "Lisa Wong",
-          "email": "lisawong@gmail.com",
-          "portfolio_link": "www.lisawong.art",
-          "location": "Portland, OR",
-          "residency": "Residency 2"
-        },
-        {
-          "id": 9,
-          "name": "David Miller",
-          "email": "davidmiller@gmail.com",
-          "portfolio_link": "www.davidmiller.tech",
-          "location": "Denver, CO",
-          "residency": "Residency 3"
-        },
-        {
-          "id": 10,
-          "name": "Anna Kowalski",
-          "email": "annakowalski@gmail.com",
-          "portfolio_link": "www.annakowalski.com",
-          "location": "Philadelphia, PA",
-          "residency": "Residency 1"
-        },
-        {
-          "id": 11,
-          "name": "Thomas Anderson",
-          "email": "tanderson@gmail.com",
-          "portfolio_link": "www.tanderson.io",
-          "location": "Las Vegas, NV",
-          "residency": "Residency 2"
-        },
-        {
-          "id": 12,
-          "name": "Sophie Martin",
-          "email": "sophiemartin@gmail.com",
-          "portfolio_link": "www.sophiemartin.design",
-          "location": "Atlanta, GA",
-          "residency": "Residency 3"
-        },
-        {
-          "id": 13,
-          "name": "Ryan Murphy",
-          "email": "ryanmurphy@gmail.com",
-          "portfolio_link": "www.ryanmurphy.dev",
-          "location": "Nashville, TN",
-          "residency": "Residency 1"
-        },
-        {
-          "id": 14,
-          "name": "Julia Santos",
-          "email": "juliasantos@gmail.com",
-          "portfolio_link": "www.juliasantos.art",
-          "location": "San Diego, CA",
-          "residency": "Residency 2"
-        },
-        {
-          "id": 15,
-          "name": "Hassan Ahmed",
-          "email": "hassanahmed@gmail.com",
-          "portfolio_link": "www.hassanahmed.co",
-          "location": "Houston, TX",
-          "residency": "Residency 3"
-        },
-        {
-          "id": 16,
-          "name": "Rachel Cohen",
-          "email": "rachelcohen@gmail.com",
-          "portfolio_link": "www.rachelcohen.com",
-          "location": "Minneapolis, MN",
-          "residency": "Residency 1"
-        },
-        {
-          "id": 17,
-          "name": "Daniel Lee",
-          "email": "daniellee@gmail.com",
-          "portfolio_link": "www.daniellee.tech",
-          "location": "Detroit, MI",
-          "residency": "Residency 2"
-        },
-        {
-          "id": 18,
-          "name": "Nina Patel",
-          "email": "ninapatel@gmail.com",
-          "portfolio_link": "www.ninapatel.design",
-          "location": "Phoenix, AZ",
-          "residency": "Residency 3"
-        },
-        {
-          "id": 19,
-          "name": "Chris Wilson",
-          "email": "chriswilson@gmail.com",
-          "portfolio_link": "www.chriswilson.io",
-          "location": "Salt Lake City, UT",
-          "residency": "Residency 1"
-        },
-        {
-          "id": 20,
-          "name": "Alexandra Kim",
-          "email": "alexandrakim@gmail.com",
-          "portfolio_link": "www.alexandrakim.com",
-          "location": "Dallas, TX",
-          "residency": "Residency 2"
-        },
-        {
-          "id": 21,
-          "name": "Marco Rossi",
-          "email": "marcorossi@gmail.com",
-          "portfolio_link": "www.marcorossi.dev",
-          "location": "Sacramento, CA",
-          "residency": "Residency 3"
-        }
-      ]
+      "id": 1,
+      "first_name": "Anand",
+      "last_name": "Joshi",
+      "residency_name": "Residency 1",
+      "image_url": "https://media.licdn.com/dms/image/v2/D4E03AQHf8Xo1scVcmQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1703383829714?e=1735776000&v=beta&t=F7DmN4rJAwIZQfgyU6C2wuveQWJhpJG2XRlrN-b4Do0",
+      "residency_year": "2022",
+      "email": "anandjoshi@gmail.com",
+      "instagram_url": "https://instagram.com/anandjoshi",
+      "bio": "Anand is a passionate innovator who completed his residency in 2022, where he focused on digital transformation and process optimization. Outside of work, he enjoys sharing insights and moments on Instagram."
+    },
+    {
+      "id": 2,
+      "first_name": "Sarah",
+      "last_name": "Mitchell",
+      "residency_name": "Residency 2",
+      "image_url": "https://example.com/sarahmitchell.jpg",
+      "residency_year": "2021",
+      "email": "sarahmitchell@gmail.com",
+      "instagram_url": "https://instagram.com/sarahmitchell",
+      "bio": "Sarah is known for her strategic approach to project management and operational efficiency, having completed Residency 2 in 2021. She shares updates and moments from her professional journey on Instagram."
+    },
+    {
+      "id": 3,
+      "first_name": "James",
+      "last_name": "Chen",
+      "residency_name": "Residency 3",
+      "image_url": "https://example.com/jameschen.jpg",
+      "residency_year": "2020",
+      "email": "jameschen@gmail.com",
+      "instagram_url": "https://instagram.com/jameschen",
+      "bio": "With a background in data analytics and system improvements, James completed Residency 3 in 2020, bringing a unique analytical perspective to every project. Stay connected with his updates on Instagram."
+    },
+    {
+      "id": 4,
+      "first_name": "Maria",
+      "last_name": "Garcia",
+      "residency_name": "Residency 1",
+      "image_url": "https://example.com/mariagarcia.jpg",
+      "residency_year": "2022",
+      "email": "mariagarcia@gmail.com",
+      "instagram_url": "https://instagram.com/mariagarcia",
+      "bio": "Maria’s expertise in UX design and user-centered solutions shines through her work from Residency 1 in 2022. She showcases her projects and inspirations on Instagram."
+    },
+    {
+      "id": 5,
+      "first_name": "Robert",
+      "last_name": "Kim",
+      "residency_name": "Residency 2",
+      "image_url": "https://example.com/robertkim.jpg",
+      "residency_year": "2021",
+      "email": "robertkim@gmail.com",
+      "instagram_url": "https://instagram.com/robertkim",
+      "bio": "Robert’s focus on cybersecurity and system resilience during his residency has made him a valuable asset in tech. Check out his personal insights on Instagram."
+    },
+    {
+      "id": 6,
+      "first_name": "Emily",
+      "last_name": "Johnson",
+      "residency_name": "Residency 3",
+      "image_url": "https://example.com/emilyjohnson.jpg",
+      "residency_year": "2020",
+      "email": "emilyjohnson@gmail.com",
+      "instagram_url": "https://instagram.com/emilyjohnson",
+      "bio": "Known for her innovative solutions in AI and machine learning, Emily completed her residency in 2020. She shares her journey and accomplishments on Instagram."
+    },
+    {
+      "id": 7,
+      "first_name": "Michael",
+      "last_name": "Patel",
+      "residency_name": "Residency 1",
+      "image_url": "https://example.com/michaelpatel.jpg",
+      "residency_year": "2022",
+      "email": "michaelpatel@gmail.com",
+      "instagram_url": "https://instagram.com/michaelpatel",
+      "bio": "Michael, a graduate of Residency 1 in 2022, specializes in fintech solutions and data-driven strategies. Follow his work and adventures on Instagram."
+    },
+    {
+      "id": 8,
+      "first_name": "Lisa",
+      "last_name": "Wong",
+      "residency_name": "Residency 2",
+      "image_url": "https://example.com/lisawong.jpg",
+      "residency_year": "2021",
+      "email": "lisawong@gmail.com",
+      "instagram_url": "https://instagram.com/lisawong",
+      "bio": "Lisa’s work in community-driven tech and sustainable practices stands out. She completed Residency 2 in 2021 and frequently shares her journey on Instagram."
+    },
+    {
+      "id": 9,
+      "first_name": "David",
+      "last_name": "Miller",
+      "residency_name": "Residency 3",
+      "image_url": "https://example.com/davidmiller.jpg",
+      "residency_year": "2020",
+      "email": "davidmiller@gmail.com",
+      "instagram_url": "https://instagram.com/davidmiller",
+      "bio": "David, an experienced software engineer, completed Residency 3 in 2020 and now focuses on scalable system architecture. Follow him on Instagram to learn more about his work."
+    },
+    {
+      "id": 10,
+      "first_name": "Anna",
+      "last_name": "Kowalski",
+      "residency_name": "Residency 1",
+      "image_url": "https://example.com/annakowalski.jpg",
+      "residency_year": "2022",
+      "email": "annakowalski@gmail.com",
+      "instagram_url": "https://instagram.com/annakowalski",
+      "bio": "Anna is passionate about developing community outreach tools through technology. She completed Residency 1 in 2022 and shares her insights on Instagram."
+    },
+    {
+      "id": 11,
+      "first_name": "Thomas",
+      "last_name": "Anderson",
+      "residency_name": "Residency 2",
+      "image_url": "https://example.com/thomasanderson.jpg",
+      "residency_year": "2021",
+      "email": "tanderson@gmail.com",
+      "instagram_url": "https://instagram.com/thomasanderson",
+      "bio": "Thomas is a forward-thinking developer focused on cloud technologies, completing Residency 2 in 2021. Stay connected with his professional journey on Instagram."
+    },
+    {
+      "id": 12,
+      "first_name": "Sophie",
+      "last_name": "Martin",
+      "residency_name": "Residency 3",
+      "image_url": "https://example.com/sophiemartin.jpg",
+      "residency_year": "2020",
+      "email": "sophiemartin@gmail.com",
+      "instagram_url": "https://instagram.com/sophiemartin",
+      "bio": "With a keen interest in ethical AI and machine learning, Sophie graduated from Residency 3 in 2020. She shares her perspectives on Instagram."
+    },
+    {
+      "id": 13,
+      "first_name": "Ryan",
+      "last_name": "Murphy",
+      "residency_name": "Residency 1",
+      "image_url": "https://example.com/ryanmurphy.jpg",
+      "residency_year": "2022",
+      "email": "ryanmurphy@gmail.com",
+      "instagram_url": "https://instagram.com/ryanmurphy",
+      "bio": "Ryan specializes in user-focused software development, completing his residency in 2022. Follow him on Instagram to see his latest projects."
+    },
+    {
+      "id": 14,
+      "first_name": "Julia",
+      "last_name": "Santos",
+      "residency_name": "Residency 2",
+      "image_url": "https://example.com/juliasantos.jpg",
+      "residency_year": "2021",
+      "email": "juliasantos@gmail.com",
+      "instagram_url": "https://instagram.com/juliasantos",
+      "bio": "Julia brings creativity and technical skills to her role as a designer, having completed Residency 2 in 2021. Check out her latest work on Instagram."
+    },
+    {
+      "id": 15,
+      "first_name": "Hassan",
+      "last_name": "Ahmed",
+      "residency_name": "Residency 3",
+      "image_url": "https://example.com/hassanahmed.jpg",
+      "residency_year": "2020",
+      "email": "hassanahmed@gmail.com",
+      "instagram_url": "https://instagram.com/hassanahmed",
+      "bio": "Hassan’s expertise in machine learning and big data applications led him through Residency 3 in 2020. He frequently shares his journey and insights on Instagram."
     }
   ]
-  
+}]

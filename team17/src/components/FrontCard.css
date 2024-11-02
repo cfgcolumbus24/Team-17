@@ -2,14 +2,16 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    width: 300px;
     margin: 16px;
     text-align: center;
+    width: 250px;
+    height: 350px;
   }
   
   .card-image {
+    margin-top:15px;
     width: 100%;
-    height: 180px;
+    height: 160px;
     object-fit: cover;
   }
   
@@ -50,12 +52,12 @@
     border-radius: 50%; 
     object-fit: cover; 
 }
-.card-title {
-    margin-bottom: 0.2rem;
-}
+  .card-title {
+      margin-bottom: 0.2rem;
+  }
 
-.card-description {
-    margin-top: 0.2rem; /* This can also be adjusted */
-}
+  .card-description {
+      margin-top: 0.2rem; 
+  }
 
 

@@ -32,7 +32,7 @@ function Navbar() {
                     className={active === "Alumni Directory" ? "active" : ""}
                     onClick={() => handleSetActive("Alumni Directory")}
                 >
-                    <a href="/directory">Alumni Directory</a>
+                    <a href="/">Alumni Directory</a>
                 </li>
 
                 <li>
