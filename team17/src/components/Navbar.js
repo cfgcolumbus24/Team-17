@@ -24,12 +24,12 @@ function Navbar() {
                 >
                     <a href="/tools">Alumni Tools</a>
                 </li>
-                <li
+                {/* <li
                     className={active === "Resources" ? "active" : ""}
                     onClick={() => handleSetActive("Resources")}
                 >
                     <a href="/resources">Resources</a>
-                </li>
+                </li> */}
                 <li
                     className={active === "Alumni Directory" ? "active" : ""}
                     onClick={() => handleSetActive("Alumni Directory")}
