@@ -2,6 +2,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AlumniTools from './components/Alumni-Tools';
+import Directory from './directory';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
             <div>
                 <Navbar />
                 <Routes>
-                    <Route path="/" element={<h1>Alumni Directory Page</h1>} />
+                    <Route path="/" element={<Directory/>} />
                     <Route path="/tools" element={<AlumniTools />} />
                     <Route path="/resources" element={<h1>Resources Page</h1>} />
                 </Routes>
