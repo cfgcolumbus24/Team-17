@@ -2,11 +2,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AlumniTools from './components/Alumni-Tools';
-import Directory from './directory.js';
-
-import React from 'react';
-import TagManagement from './components/TagManagement';
-
+import Directory from './components/Directory.js';
 
 function App() {
 
@@ -51,6 +47,15 @@ function App() {
             category: { title: 'Resources' },
             author: 'Sophie Kim',
           },
+          {
+            id: 5,
+            title: 'Photography Workshop 11/12',
+            description: 'Join my photography workshop for beginners and intermediate levels.',
+            date: 'Oct 28, 2024',
+            datetime: '10/28/2024 08:19:42',
+            category: { title: 'Alumni Event' },
+            author: 'Sophie Kim',
+          },
       ]
     }
   ]
@@ -62,8 +67,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Directory/>} />
                     <Route path="/tools" element={<AlumniTools posts = {data[0].posts} />} />
-                    <Route path="/resources" element={<h1>Resources Page</h1>} />
-                    <Route path="/tags" element={<TagManagement />} /> {/* New route for tags */}
+                    {/* <Route path="/resources" element={<h1>Resources Page</h1>} /> */}
                 </Routes>
             </div>
         </Router>
