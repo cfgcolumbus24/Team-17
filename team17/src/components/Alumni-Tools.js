@@ -41,7 +41,7 @@ function AlumniTools() {
             description: 'Come to my showcase in lower Manhattan on November 3rd!',
             date: 'Oct 31, 2024',
             datetime: '10/31/2024 12:29:08',
-            category: { title: 'Event' },
+            category: { title: 'Spotlight' },
             author: 'John Doe',
           },
           {
@@ -59,10 +59,14 @@ function AlumniTools() {
             description: 'Join my photography workshop for beginners and intermediate levels.',
             date: 'Oct 28, 2024',
             datetime: '10/28/2024 08:19:42',
-            category: { title: 'Workshop' },
+            category: { title: 'Resources' },
             author: 'Sophie Kim',
           },
       ]
+
+      const filteredPosts = selectedFilters.length > 0
+        ? posts.filter(post => selectedFilters.includes(post.category.title))
+        : posts;
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '30px' }}>
@@ -144,9 +148,9 @@ function AlumniTools() {
             
             <div className="bg-white py-24 sm:py-32">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'space-between' }}>
-                        {posts.map((post) => (
-                            <article key={post.id} style={{ flex: '1 1 calc(33.333% - 20px)', maxWidth: 'calc(33.333% - 20px)', boxSizing: 'border-box' }} className="flex flex-col items-start justify-between bg-white p-4 shadow rounded-md">
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', justifyItems: 'stretch' }}>
+                        {filteredPosts.map((post) => (
+                            <article key={post.id} style={{ boxSizing: 'border-box', minHeight: '200px' }} className="flex flex-col items-start justify-between bg-white p-4 shadow rounded-md">
                                 <div className="flex items-center gap-x-4 text-xs">
                                     <time dateTime={post.datetime} className="text-gray-500">
                                         {post.date}
@@ -175,7 +179,6 @@ function AlumniTools() {
                                     <p className="mt-5 text-sm text-gray-600 line-clamp-3">{post.description}</p>
                                 </div>
                                 <div className="relative mt-8 flex items-center gap-x-4">
-                                    <img alt="" src={post.author.imageUrl} className="h-10 w-10 rounded-full bg-gray-50" />
                                     <div className="text-sm">
                                         <p className="font-semibold text-gray-900">
                                             <a href={post.author.href}>
