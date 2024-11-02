@@ -4,7 +4,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AlumniTools from './components/Alumni-Tools';
 import Directory from './directory.js';
 
+import React from 'react';
+import TagManagement from './components/TagManagement';
+
+
 function App() {
+
+
   
   const data = [
     {
@@ -57,6 +63,7 @@ function App() {
                     <Route path="/" element={<Directory/>} />
                     <Route path="/tools" element={<AlumniTools posts = {data[0].posts} />} />
                     <Route path="/resources" element={<h1>Resources Page</h1>} />
+                    <Route path="/tags" element={<TagManagement />} /> {/* New route for tags */}
                 </Routes>
             </div>
         </Router>

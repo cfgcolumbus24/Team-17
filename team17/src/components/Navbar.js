@@ -36,6 +36,7 @@ function Navbar() {
                 >
                     <a href="/">Alumni Directory</a>
                 </li>
+                
             </ul>
 
         </nav>
