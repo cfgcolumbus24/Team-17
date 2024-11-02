@@ -10,7 +10,6 @@ function AlumniTools() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        // Load posts from localStorage if available, else load from JSON
         const storedPosts = JSON.parse(localStorage.getItem('posts'));
         if (storedPosts) {
             setPosts(storedPosts);
@@ -41,12 +40,11 @@ function AlumniTools() {
         );
     };
 
-    // Define color mappings for each category
     const categoryColors = {
-        'Collaboration': '#1e90ff', // blue
-        'Spotlight': '#ff69b4', // pink
-        'Alumni Event': '#32cd32', // green
-        'Resources': '#ffa500', // orange
+        'Collaboration': '#1e90ff',
+        'Spotlight': '#ff69b4',
+        'Alumni Event': '#32cd32',
+        'Resources': '#ffa500'
     };
 
     const filteredPosts = posts.filter(post => {
@@ -89,18 +87,17 @@ function AlumniTools() {
         };
 
         const updatedPosts = [...posts, newPost];
-        setPosts(updatedPosts); // Update posts state
+        setPosts(updatedPosts);
 
-        // Save the updated posts list to localStorage
         localStorage.setItem('posts', JSON.stringify(updatedPosts));
 
-        // Reset form data and close popup
         setNewPostData({ title: '', description: '', category: '', author: 'Guest', imageUrl: '' });
         closePopup();
     };
 
     return (
         <div style={{ padding: '30px' }}>
+            {/* Header Section */}
             <div style={{ position: 'relative', marginBottom: '20px' }}>
                 <img
                     src="https://lmcc.net/wp-content/uploads/2024/10/MetPerspectives_MET_Paula_Lobo-04-12-7926-scaled.jpg"
@@ -119,8 +116,8 @@ function AlumniTools() {
                     left: '50%',
                     transform: 'translate(-50%, -50%)',
                     color: '#fff',
-                    fontSize: '40px', // Increased font size
-                    fontWeight: 'bold', // Added bold style
+                    fontSize: '40px',
+                    fontWeight: 'bold',
                     padding: '15px',
                     borderRadius: '10px',
                     textAlign: 'center'
@@ -129,6 +126,7 @@ function AlumniTools() {
                 </div>
             </div>
 
+            {/* Search and Filter Section */}
             <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '20px' }}>
                 <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center', width: '100%', maxWidth: '800px' }}>
                     <input
@@ -166,141 +164,48 @@ function AlumniTools() {
                 </form>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-                <div style={{ marginRight: '20px', padding: '10px', minWidth: '150px', display: 'flex', flexDirection: 'column' }}>
-                    <h3 style={{ fontSize: '20px' }}>Tags</h3> {/* Increased font size */}
-                    <div style={{
-                        border: '1px solid #ccc',
-                        borderRadius: '5px',
-                        padding: '10px',
-                        minHeight: '50px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        marginBottom: '20px'
-                    }}>
-                        {selectedFilters.length > 0 ? (
-                            selectedFilters.map((filter) => (
-                                <span
-                                    key={filter}
-                                    style={{
-                                        backgroundColor: categoryColors[filter],
-                                        color: '#fff',
-                                        borderRadius: '3px',
-                                        padding: '5px 10px',
-                                        margin: '5px 0',
-                                        fontSize: '16px', // Increased font size
-                                    }}
-                                >
-                                    {filter}
-                                </span>
-                            ))
-                        ) : (
-                            <span>No selected filters</span>
-                        )}
-                    </div>
-
-                    <button
-                        onClick={openNewPostPopup}
+            {/* Responsive Grid Section */}
+            <div className="grid-container" style={{ display: 'grid', gap: '20px', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', justifyItems: 'stretch' }}>
+                {filteredPosts.map((post) => (
+                    <article
+                        key={post.id}
                         style={{
-                            padding: '10px 15px',
-                            fontSize: '16px',
-                            backgroundColor: '#e0e0e0',
-                            color: '#000',
-                            border: 'none',
-                            borderRadius: '5px',
-                            cursor: 'pointer'
+                            borderRadius: '15px',
+                            padding: '15px',
+                            margin: '10px',
+                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                            backgroundColor: '#fff'
                         }}
-                    >
-                        Make a New Post
-                    </button>
-                </div>
-
-                <div style={{ flex: 1 }}>
-                    <div className="bg-white py-24 sm:py-32">
-                        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', justifyItems: 'stretch' }}>
-                                {filteredPosts.map((post) => (
-                                    <article
-                                        key={post.id}
-                                        style={{
-                                            boxSizing: 'border-box',
-                                            minHeight: '200px',
-                                            borderRadius: '15px',
-                                            padding: '15px',
-                                            margin: '10px',
-                                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)'
-                                        }}
-                                        onClick={() => handlePostClick(post)}>
-                                        <img src={post.imageUrl} alt={post.title} style={{ width: '100%', borderRadius: '10px', marginBottom: '10px' }} />
-                                        <div className="flex items-center gap-x-4">
-                                            <div style={{ flex: 1 }}>
-                                                <h3 style={{ fontSize: '20px' }}>{post.title}</h3> {/* Increased font size */}
-                                                <p style={{ fontSize: '16px' }}>{post.description}</p> {/* Increased font size */}
-                                                <p style={{ fontSize: '14px', color: '#777' }}>{post.date}</p> {/* Increased font size */}
-                                            </div>
-                                            <span
-                                                style={{
-                                                    fontSize: '12px',
-                                                    fontWeight: 'bold',
-                                                    color: categoryColors[post.category.title],
-                                                }}
-                                            >
-                                                {post.category.title}
-                                            </span>
-                                        </div>
-                                    </article>
-                                ))}
-                            </div>
+                        onClick={() => handlePostClick(post)}>
+                        <img src={post.imageUrl} alt={post.title} style={{ width: '100%', borderRadius: '10px', marginBottom: '10px' }} />
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                            <time style={{ color: '#777', fontSize: '14px' }}>{post.date}</time>
+                            <h3 style={{ fontSize: '20px', margin: '10px 0 5px 0' }}>{post.title}</h3>
+                            <p style={{ fontSize: '16px', color: '#555' }}>{post.description}</p>
+                            <span style={{
+                                marginTop: '5px',
+                                fontSize: '14px',
+                                fontWeight: 'bold',
+                                color: categoryColors[post.category.title]
+                            }}>
+                                {post.category.title}
+                            </span>
                         </div>
-                    </div>
-                </div>
+                    </article>
+                ))}
             </div>
-            {selectedPost && (
-                <Popup post={selectedPost} onClose={closePopup} isNewPost={false} />
-            )}
 
+            {/* Popups */}
+            {selectedPost && <Popup post={selectedPost} onClose={closePopup} isNewPost={false} />}
             {isNewPostPopupOpen && (
                 <Popup onClose={closePopup} isNewPost={true}>
                     <form onSubmit={handleNewPostSubmit}>
                         <h2>New Post</h2>
-                        <input
-                            type="text"
-                            name="title"
-                            placeholder="Title"
-                            value={newPostData.title}
-                            onChange={handleNewPostChange}
-                            required
-                        />
-                        <textarea
-                            name="description"
-                            placeholder="Description"
-                            value={newPostData.description}
-                            onChange={handleNewPostChange}
-                            required
-                        />
-                        <input
-                            type="text"
-                            name="category"
-                            placeholder="Category"
-                            value={newPostData.category}
-                            onChange={handleNewPostChange}
-                            required
-                        />
-                        <input
-                            type="text"
-                            name="author"
-                            placeholder="Author"
-                            value={newPostData.author}
-                            onChange={handleNewPostChange}
-                            required
-                        />
-                        <input
-                            type="text"
-                            name="imageUrl"
-                            placeholder="Image URL"
-                            value={newPostData.imageUrl}
-                            onChange={handleNewPostChange}
-                        />
+                        <input type="text" name="title" placeholder="Title" value={newPostData.title} onChange={handleNewPostChange} required />
+                        <textarea name="description" placeholder="Description" value={newPostData.description} onChange={handleNewPostChange} required />
+                        <input type="text" name="category" placeholder="Category" value={newPostData.category} onChange={handleNewPostChange} required />
+                        <input type="text" name="author" placeholder="Author" value={newPostData.author} onChange={handleNewPostChange} required />
+                        <input type="text" name="imageUrl" placeholder="Image URL" value={newPostData.imageUrl} onChange={handleNewPostChange} />
                         <button type="submit">Submit</button>
                     </form>
                 </Popup>
