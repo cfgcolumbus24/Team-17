@@ -2,7 +2,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AlumniTools from './components/Alumni-Tools';
-import Directory from './directory';
+import Directory from './directory.js';
 
 function App() {
   return (

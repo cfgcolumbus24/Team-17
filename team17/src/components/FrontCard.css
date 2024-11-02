@@ -6,7 +6,6 @@
     text-align: center;
     width: 250px;
     height: 350px;
-  
   }
   
   .card-image {
@@ -53,12 +52,12 @@
     border-radius: 50%; 
     object-fit: cover; 
 }
-.card-title {
-    margin-bottom: 0.2rem;
-}
+  .card-title {
+      margin-bottom: 0.2rem;
+  }
 
-.card-description {
-    margin-top: 0.2rem; /* This can also be adjusted */
-}
+  .card-description {
+      margin-top: 0.2rem; 
+  }
 
 

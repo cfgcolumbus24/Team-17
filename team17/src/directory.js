@@ -6,6 +6,7 @@ import ReactCardFlip from 'react-card-flip';
 import BackCard from './components/BackCard';
 
 function Directory() {
+    
   const [searchTerm, setSearchTerm] = useState(''); // State to hold the search term
   const [filter, setFilter] = useState('');
   const alumniList = alumniData[0].alumni;
@@ -54,10 +55,12 @@ function Directory() {
           value={filter}
           onChange={handleChangeFilter}
         >
-          <option value="">Filter by Residency</option>
-          <option value="Residency 1">Residency 1</option>
-          <option value="Residency 2">Residency 2</option>
-          <option value="Residency 3">Residency 3</option>
+          <option value="World Views">Filter by Residency</option>
+          <option value="Swing Space">Creative Space NYC</option>
+          <option value="Process Space">Art Haven</option>
+          <option value="Seniors Partnering with Artists Citywide (SPARC)"></option>
+          <option value="Extended Life"></option>
+          <option value="Paris Residency"></option>
         </select>
         <input
           type="text"
@@ -92,7 +95,6 @@ function Directory() {
                 <BackCard
                     bio = {alumni.bio}
                 />
-
             </div>
           </ReactCardFlip>
         ))}
