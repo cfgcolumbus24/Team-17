@@ -38,5 +38,15 @@
     "datetime": "2024-10-28T08:19:42",
     "category": { "title": "Resources" },
     "author": "Sophie Kim"
+  },
+  {
+    "id": 5,
+    "title": "Alumni Reunion 11/15",
+    "description": "Join us for an alumni reunion!",
+    "imageUrl": "https://lmcc.net/wp-content/uploads/2024/08/PMTSpring15-25-scaled.jpg",
+    "date": "Oct 28, 2024",
+    "datetime": "2024-10-28T08:19:42",
+    "category": { "title": "Alumni Event" },
+    "author": "Bella Johnson"
   }
 ]
