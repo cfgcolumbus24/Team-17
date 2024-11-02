@@ -46,7 +46,19 @@ function Directory() {
                 <h1 className="directory-title">Alumni Directory</h1>
                 {/* Search bar below the header image */}
                 <div className="search-container">
-                    <select name="filter" value={filter} onChange={handleChangeFilter}>
+                    <input
+                        type="text"
+                        placeholder="Search by name..."
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                        className="search-input"
+                    />
+                    <select
+                        name="filter"
+                        value={filter}
+                        onChange={handleChangeFilter}
+                        className="filter-dropdown"
+                    >
                         <option value="">Filter by Residency</option>
                         <option value="World Views">World Views</option>
                         <option value="Swing Space">Swing Space</option>
@@ -55,13 +67,6 @@ function Directory() {
                         <option value="Extended Life">Extended Life</option>
                         <option value="Paris Residency">Paris Residency</option>
                     </select>
-                    <input
-                        type="text"
-                        placeholder="Search by name..."
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                        className="search-input"
-                    />
                 </div>
             </div>
 
