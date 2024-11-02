@@ -1,11 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Popup from './Popup';
+import postsData from '../mockPostData.json';
 
 function AlumniTools() {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [selectedPost, setSelectedPost] = useState(null);
     const [isNewPostPopupOpen, setIsNewPostPopupOpen] = useState(false);
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        // Load posts from localStorage if available, else load from JSON
+        const storedPosts = JSON.parse(localStorage.getItem('posts'));
+        if (storedPosts) {
+            setPosts(storedPosts);
+        } else {
+            setPosts(postsData);
+        }
+    }, []);
+
+    const [newPostData, setNewPostData] = useState({
+        title: '',
+        description: '',
+        category: '',
+        author: 'Guest',
+        imageUrl: ''
+    });
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -20,49 +40,6 @@ function AlumniTools() {
                 : [...prevFilters, filter]
         );
     };
-
-    const posts = [
-        {
-            id: 1,
-            title: 'Art Exhibit 11/1',
-            description: 'Looking for a friend on a new project!',
-            imageUrl: 'https://lmcc.net/wp-content/uploads/2024/10/MetPerspectives_MET_Paula_Lobo-04-12-7926-scaled.jpg',
-            date: 'Nov 01, 2024',
-            datetime: '11/01/2024 06:31:08',
-            category: { title: 'Collaboration' },
-            author: 'Anand Joshi',
-        },
-        {
-            id: 2,
-            title: 'Showcase 11/3',
-            description: 'Come to my showcase in lower Manhattan on November 3rd!',
-            imageUrl: 'https://lmcc.net/wp-content/uploads/2024/09/pink-1.jpeg',
-            date: 'Oct 31, 2024',
-            datetime: '10/31/2024 12:29:08',
-            category: { title: 'Spotlight' },
-            author: 'John Doe',
-        },
-        {
-            id: 3,
-            title: 'Spotlight Artist: Maria Garcia',
-            description: 'This month we are celebrating a new and upcoming artist, Maria Garcia!',
-            imageUrl: 'https://lmcc.net/wp-content/uploads/2024/10/she_walks_the_air_vi_1.jpeg',
-            date: 'Sept 14, 2024',
-            datetime: '09/14/2024 10:49:08',
-            category: { title: 'Spotlight' },
-            author: 'Zayn Malik',
-        },
-        {
-            id: 4,
-            title: 'Photography Workshop 11/12',
-            description: 'Join my photography workshop for beginners and intermediate levels.',
-            imageUrl: 'https://lmcc.net/wp-content/uploads/2024/08/PMTSpring15-25-scaled.jpg',
-            date: 'Oct 28, 2024',
-            datetime: '10/28/2024 08:19:42',
-            category: { title: 'Resources' },
-            author: 'Sophie Kim',
-        },
-    ];
 
     // Define color mappings for each category
     const categoryColors = {
@@ -91,6 +68,35 @@ function AlumniTools() {
 
     const openNewPostPopup = () => {
         setIsNewPostPopupOpen(true);
+    };
+
+    const handleNewPostChange = (e) => {
+        const { name, value } = e.target;
+        setNewPostData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
+
+    const handleNewPostSubmit = (e) => {
+        e.preventDefault();
+        const newPost = {
+            ...newPostData,
+            id: posts.length + 1,
+            date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+            datetime: new Date().toISOString(),
+            category: { title: newPostData.category }
+        };
+
+        const updatedPosts = [...posts, newPost];
+        setPosts(updatedPosts); // Update posts state
+
+        // Save the updated posts list to localStorage
+        localStorage.setItem('posts', JSON.stringify(updatedPosts));
+
+        // Reset form data and close popup
+        setNewPostData({ title: '', description: '', category: '', author: 'Guest', imageUrl: '' });
+        closePopup();
     };
 
     return (
@@ -134,7 +140,7 @@ function AlumniTools() {
                             padding: '10px',
                             fontSize: '16px',
                             width: '250px',
-                            marginRight: '20px',
+                            marginRight: '20px'
                         }}
                     />
                     <div style={{ display: 'flex', gap: '10px' }}>
@@ -150,7 +156,7 @@ function AlumniTools() {
                                     color: selectedFilters.includes(filter) ? '#fff' : '#000',
                                     border: 'none',
                                     borderRadius: '5px',
-                                    cursor: 'pointer',
+                                    cursor: 'pointer'
                                 }}
                             >
                                 {filter}
@@ -170,7 +176,7 @@ function AlumniTools() {
                         minHeight: '50px',
                         display: 'flex',
                         flexDirection: 'column',
-                        marginBottom: '20px',
+                        marginBottom: '20px'
                     }}>
                         {selectedFilters.length > 0 ? (
                             selectedFilters.map((filter) => (
@@ -181,8 +187,12 @@ function AlumniTools() {
                                         color: '#fff',
                                         borderRadius: '3px',
                                         padding: '5px 10px',
+<<<<<<< HEAD
                                         margin: '5px 0',
                                         fontSize: '16px', // Increased font size
+=======
+                                        margin: '5px 0'
+>>>>>>> dev
                                     }}
                                 >
                                     {filter}
@@ -202,7 +212,7 @@ function AlumniTools() {
                             color: '#000',
                             border: 'none',
                             borderRadius: '5px',
-                            cursor: 'pointer',
+                            cursor: 'pointer'
                         }}
                     >
                         Make a New Post
@@ -222,7 +232,7 @@ function AlumniTools() {
                                             borderRadius: '15px',
                                             padding: '15px',
                                             margin: '10px',
-                                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)'
                                         }}
                                         onClick={() => handlePostClick(post)}>
                                         <img src={post.imageUrl} alt={post.title} style={{ width: '100%', borderRadius: '10px', marginBottom: '10px' }} />
@@ -251,10 +261,62 @@ function AlumniTools() {
             </div>
 
             {selectedPost && (
+<<<<<<< HEAD
                 <Popup post={selectedPost} onClose={closePopup} />
+=======
+                <Popup post={selectedPost} onClose={closePopup} isNewPost={false} />
+>>>>>>> dev
             )}
+
             {isNewPostPopupOpen && (
+<<<<<<< HEAD
                 <Popup post={{ title: '', description: '', category: {} }} onClose={closePopup} />
+=======
+                <Popup onClose={closePopup} isNewPost={true}>
+                    <form onSubmit={handleNewPostSubmit}>
+                        <h2>New Post</h2>
+                        <input
+                            type="text"
+                            name="title"
+                            placeholder="Title"
+                            value={newPostData.title}
+                            onChange={handleNewPostChange}
+                            required
+                        />
+                        <textarea
+                            name="description"
+                            placeholder="Description"
+                            value={newPostData.description}
+                            onChange={handleNewPostChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="category"
+                            placeholder="Category"
+                            value={newPostData.category}
+                            onChange={handleNewPostChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="author"
+                            placeholder="Author"
+                            value={newPostData.author}
+                            onChange={handleNewPostChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="imageUrl"
+                            placeholder="Image URL"
+                            value={newPostData.imageUrl}
+                            onChange={handleNewPostChange}
+                        />
+                        <button type="submit">Submit</button>
+                    </form>
+                </Popup>
+>>>>>>> dev
             )}
         </div>
     );
