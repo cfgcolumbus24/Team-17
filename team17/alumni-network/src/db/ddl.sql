@@ -1,23 +1,9 @@
-CREATE TABLE person ( 
-person_id INT AUTO_INCREMENT PRIMARY KEY,  
-first_name VARCHAR(50) NOT NULL, 
-last_name VARCHAR(50) NOT NULL, 
-media VARCHAR(100), 
-email VARCHAR(100) UNIQUE NOT NULL, 
-portfolio_link VARCHAR(255), 
-location VARCHAR(100), 
-instagram_url VARCHAR(255) );
+CREATE TABLE Users ( ID INT AUTO_INCREMENT PRIMARY KEY, Name VARCHAR(50) NOT NULL, Bio VARCHAR(100), Email VARCHAR(100) UNIQUE NOT NULL, Portfolio VARCHAR(255), Picture_URL VARCHAR(255), Residency_ID INT NOT NULL, Socials VARCHAR(100) ); 
 
-CREATE TABLE residency (
-    residency_id INT AUTO_INCREMENT PRIMARY KEY,  
-    residency_name VARCHAR(100) NOT NULL,
-    residency_year INT NOT NULL
-);
+CREATE TABLE Residency ( ID INT AUTO_INCREMENT PRIMARY KEY, Residency_Name VARCHAR(100) NOT NULL, Year INT NOT NULL ); 
 
-CREATE TABLE person_residency (
-	person_residency_id INT AUTO_INCREMENT PRIMARY KEY, 
-    person_id INT NOT NULL,
-    residency_id INT NOT NULL,
-    FOREIGN KEY (person_id) REFERENCES person(person_id),
-    FOREIGN KEY (residency_id) REFERENCES residency(residency_id)
-);
+CREATE TABLE PersonResidency ( PersonID INT NOT NULL, ResidencyID INT NOT NULL, FOREIGN KEY (PersonID) REFERENCES Users(ID), FOREIGN KEY (ResidencyID) REFERENCES Residency(ID) )
+
+CREATE TABLE Posts ( ID INT AUTO_INCREMENT PRIMARY KEY, Author_ID INT NOT NULL, Title VARCHAR(255) NOT NULL, Description TEXT, Tag_ID INT, Picture_URL VARCHAR(255), Post_Date DATETIME NOT NULL, Active BOOLEAN NOT NULL DEFAULT TRUE, FOREIGN KEY (Author_ID) REFERENCES Users(ID) );
+
+CREATE TABLE Tags ( ID INT AUTO_INCREMENT PRIMARY KEY, Tag VARCHAR(50) NOT NULL );
