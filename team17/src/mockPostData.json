@@ -1,0 +1,127 @@
+[
+    {
+        "posts": [
+          {
+            "id": 1,
+            "author": "Anand Joshi",
+            "title": "Art Exhibit 11/1",
+            "description": "Looking for a friend on a new project!",
+            "tag": "Collaboration",
+            "date_posted": "11/01/2024 06:31:08",
+            "comments": {
+              "Bob Johnson": "Looking forward to it!",
+              "Alice Green": "Would love to know more about the project!"
+            }
+          },
+          {
+            "id": 2,
+            "author": "John Doe",
+            "title": "Showcase 11/3",
+            "description": "Come to my showcase in lower Manhattan on November 3rd!",
+            "tag": "Event",
+            "date_posted": "10/31/2024 12:29:08",
+            "comments": {
+              "Jake Wood": "Sounds good!",
+              "Lily Turner": "I'll definitely be there!"
+            }
+          },
+          {
+            "id": 3,
+            "author": "Zayn Malik",
+            "title": "Spotlight Artist: Maria Garcia",
+            "description": "This month we are celebrating a new and upcoming artist, Maria Garcia!",
+            "tag": "Spotlight",
+            "date_posted": "09/14/2024 10:49:08",
+            "comments": {
+              "James Crowe": "Yay Maria!!",
+              "Mark Rover": "Congrats to Maria!",
+              "Emma Stone": "So happy for you, Maria!"
+            }
+          },
+          {
+            "id": 4,
+            "author": "Sophie Kim",
+            "title": "Photography Workshop 11/12",
+            "description": "Join my photography workshop for beginners and intermediate levels.",
+            "tag": "Workshop",
+            "date_posted": "10/28/2024 08:19:42",
+            "comments": {
+              "Harold Finch": "I've been waiting for this!",
+              "Linda Ray": "Can’t wait to learn from you!"
+            }
+          },
+          {
+            "id": 5,
+            "author": "Carlos Mendoza",
+            "title": "Street Art Tour 11/5",
+            "description": "Explore some of the best street art in Brooklyn on November 5th. Limited spots available!",
+            "tag": "Event",
+            "date_posted": "10/30/2024 15:17:20",
+            "comments": {
+              "Diana Prince": "I'm signing up!",
+              "Tony Hawk": "Street art? Count me in!"
+            }
+          },
+          {
+            "id": 6,
+            "author": "Emily Stone",
+            "title": "Weekly Art Challenge",
+            "description": "This week's challenge theme is 'Urban Landscapes'. Share your work!",
+            "tag": "Challenge",
+            "date_posted": "11/01/2024 09:14:32",
+            "comments": {
+              "Sarah Lee": "Love this theme!",
+              "Chris Young": "Got some ideas already!"
+            }
+          },
+          {
+            "id": 7,
+            "author": "Ryan Carter",
+            "title": "Virtual Art Talk 11/7",
+            "description": "I'll be hosting a virtual talk on 'Art in the Digital Age'. Join for insights and Q&A!",
+            "tag": "Talk",
+            "date_posted": "10/29/2024 14:53:06",
+            "comments": {
+              "Jennifer Miles": "Definitely attending!",
+              "Adam West": "Sounds fascinating, see you there!"
+            }
+          },
+          {
+            "id": 8,
+            "author": "Tara Lane",
+            "title": "Call for Artists",
+            "description": "Seeking artists for an upcoming project centered on sustainability.",
+            "tag": "Opportunity",
+            "date_posted": "10/27/2024 13:21:44",
+            "comments": {
+              "Liam Grey": "I'm interested!",
+              "Sophia White": "Sustainability in art sounds amazing!"
+            }
+          },
+          {
+            "id": 9,
+            "author": "Oliver Liu",
+            "title": "Gallery Opening 11/10",
+            "description": "New gallery opening with contemporary pieces by local artists. November 10th!",
+            "tag": "Exhibit",
+            "date_posted": "10/25/2024 11:34:10",
+            "comments": {
+              "Karen Wills": "Can't wait to see the new pieces!",
+              "Paul Martin": "I'm bringing friends!"
+            }
+          },
+          {
+            "id": 10,
+            "author": "Amy Zhang",
+            "title": "Art Supplies Giveaway!",
+            "description": "I'm giving away some lightly used art supplies. First come, first served!",
+            "tag": "Giveaway",
+            "date_posted": "11/01/2024 10:00:05",
+            "comments": {
+              "David Kim": "This is great, thank you!",
+              "Mona Swift": "I'd love to pick up a few items!"
+            }
+          }
+        ]
+    }
+]
