@@ -144,7 +144,17 @@ function AlumniTools() {
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', justifyItems: 'stretch' }}>
                         {filteredPosts.map((post) => (
-                            <article key={post.id} style={{ boxSizing: 'border-box', minHeight: '200px' }} className="flex flex-col items-start justify-between bg-white p-4 shadow rounded-md">
+                            <article
+                                key={post.id}
+                                style={{
+                                    boxSizing: 'border-box',
+                                    minHeight: '200px',
+                                    borderRadius: '15px',
+                                    padding: '15px',
+                                    margin: '10px',
+                                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                                }}
+                                className="flex flex-col items-start justify-between bg-white p-4 shadow rounded-md">
                                 <div className="flex items-center gap-x-4 text-xs">
                                     <time dateTime={post.datetime} className="text-gray-500">
                                         {post.date}
