@@ -1,6 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import { useState } from 'react';
+import logo from '../assets/logos/logo.png'
 
 function Navbar() {
     const [active, setActive] = useState("Alumni Tools");
@@ -13,7 +14,7 @@ function Navbar() {
         <nav className = "navbar">
             <div className="logo">
                 <a href= "/">
-                    <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Logo" />
+                    <img src={logo} alt="Logo" />
                 </a>
             </div>
 
@@ -22,7 +23,7 @@ function Navbar() {
                     className={active === "Alumni Tools" ? "active" : ""}
                     onClick={() => handleSetActive("Alumni Tools")}
                 >
-                    <a href="/tools">Alumni Tools</a>
+                    <a href="/tools">Feed</a>
                 </li>
                 {/* <li
                     className={active === "Resources" ? "active" : ""}
