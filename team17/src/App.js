@@ -45,6 +45,15 @@ function App() {
             category: { title: 'Resources' },
             author: 'Sophie Kim',
           },
+          {
+            id: 5,
+            title: 'Photography Workshop 11/12',
+            description: 'Join my photography workshop for beginners and intermediate levels.',
+            date: 'Oct 28, 2024',
+            datetime: '10/28/2024 08:19:42',
+            category: { title: 'Alumni Event' },
+            author: 'Sophie Kim',
+          },
       ]
     }
   ]
