@@ -255,70 +255,54 @@ function AlumniTools() {
                     </div>
                 </div>
             </div>
-
             {selectedPost && (
-                <Popup post={selectedPost} onClose={closePopup} />
+                <Popup post={selectedPost} onClose={closePopup} isNewPost={false} />
             )}
+
             {isNewPostPopupOpen && (
-                <Popup>
-                    <div style={{ padding: '20px' }}>
-                        <h3 style={{ marginBottom: '20px' }}>Create a New Post</h3>
-                        <form onSubmit={handleNewPostSubmit}>
-                            <input
-                                type="text"
-                                name="title"
-                                value={newPostData.title}
-                                onChange={handleNewPostChange}
-                                placeholder="Title"
-                                required
-                                style={{ padding: '10px', width: '100%', marginBottom: '10px' }}
-                            />
-                            <textarea
-                                name="description"
-                                value={newPostData.description}
-                                onChange={handleNewPostChange}
-                                placeholder="Description"
-                                required
-                                style={{ padding: '10px', width: '100%', marginBottom: '10px' }}
-                            />
-                            <select
-                                name="category"
-                                value={newPostData.category}
-                                onChange={handleNewPostChange}
-                                required
-                                style={{ padding: '10px', width: '100%', marginBottom: '10px' }}
-                            >
-                                <option value="">Select a category</option>
-                                {filters.map((filter) => (
-                                    <option key={filter} value={filter}>
-                                        {filter}
-                                    </option>
-                                ))}
-                            </select>
-                            <input
-                                type="text"
-                                name="imageUrl"
-                                value={newPostData.imageUrl}
-                                onChange={handleNewPostChange}
-                                placeholder="Image URL"
-                                style={{ padding: '10px', width: '100%', marginBottom: '10px' }}
-                            />
-                            <button
-                                type="submit"
-                                style={{
-                                    padding: '10px 15px',
-                                    fontSize: '16px',
-                                    backgroundColor: '#4CAF50',
-                                    color: '#fff',
-                                    border: 'none',
-                                    borderRadius: '5px',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                Create Post
-                            </button>
-                        </form>
-                    </div>
+                <Popup onClose={closePopup} isNewPost={true}>
+                    <form onSubmit={handleNewPostSubmit}>
+                        <h2>New Post</h2>
+                        <input
+                            type="text"
+                            name="title"
+                            placeholder="Title"
+                            value={newPostData.title}
+                            onChange={handleNewPostChange}
+                            required
+                        />
+                        <textarea
+                            name="description"
+                            placeholder="Description"
+                            value={newPostData.description}
+                            onChange={handleNewPostChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="category"
+                            placeholder="Category"
+                            value={newPostData.category}
+                            onChange={handleNewPostChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="author"
+                            placeholder="Author"
+                            value={newPostData.author}
+                            onChange={handleNewPostChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="imageUrl"
+                            placeholder="Image URL"
+                            value={newPostData.imageUrl}
+                            onChange={handleNewPostChange}
+                        />
+                        <button type="submit">Submit</button>
+                    </form>
                 </Popup>
             )}
         </div>
