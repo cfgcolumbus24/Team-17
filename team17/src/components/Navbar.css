@@ -46,3 +46,9 @@
     background-color: black;
     color: white;
   }
+
+  .logo img {
+    height: 70px;
+    width: auto;
+    margin: 5px;
+  }

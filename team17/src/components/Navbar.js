@@ -12,7 +12,9 @@ function Navbar() {
     return(
         <nav className = "navbar">
             <div className="logo">
-                <a href= "/"> Logo </a>
+                <a href= "/">
+                    <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Logo" />
+                </a>
             </div>
 
             <ul className="navLinks">
