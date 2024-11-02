@@ -65,7 +65,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Directory/>} />
                     <Route path="/tools" element={<AlumniTools posts = {data[0].posts} />} />
-                    <Route path="/resources" element={<h1>Resources Page</h1>} />
+                    {/* <Route path="/resources" element={<h1>Resources Page</h1>} /> */}
                 </Routes>
             </div>
         </Router>
