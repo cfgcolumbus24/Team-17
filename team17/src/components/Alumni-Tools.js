@@ -55,7 +55,7 @@ function AlumniTools() {
             category: { title: 'Resources' },
             author: 'Sophie Kim',
           },
-      ]
+      ];
 
       const filteredPosts = posts.filter(post => {
         const matchesFilter = selectedFilters.length === 0 || selectedFilters.includes(post.category.title);
@@ -66,30 +66,66 @@ function AlumniTools() {
       });
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '30px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '20px' }}>
-                <div style={{ marginRight: '20px', paddingLeft: '30px' }}>
+        <div style={{ padding: '30px' }}>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '20px' }}>
+                <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center', width: '100%', maxWidth: '800px' }}>
+                    <input
+                        type="text"
+                        placeholder="Search alumni tools..."
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                        style={{
+                            padding: '10px',
+                            fontSize: '16px',
+                            width: '250px',
+                            marginRight: '20px',
+                        }}
+                    />
+                    <div style={{ display: 'flex', gap: '10px' }}>
+                        {filters.map((filter) => (
+                            <button
+                                key={filter}
+                                type="button"
+                                onClick={() => toggleFilter(filter)}
+                                style={{
+                                    padding: '10px 15px',
+                                    fontSize: '16px',
+                                    backgroundColor: selectedFilters.includes(filter) ? '#000' : '#e0e0e0',
+                                    color: selectedFilters.includes(filter) ? '#fff' : '#000',
+                                    border: 'none',
+                                    borderRadius: '5px',
+                                    cursor: 'pointer',
+                                }}
+                            >
+                                {filter}
+                            </button>
+                        ))}
+                    </div>
+                </form>
+            </div>
+            
+            <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+                {/* Tags Box (Shows Selected Filters on the Left) */}
+                <div style={{ marginRight: '20px', padding: '10px', minWidth: '150px', display: 'flex', flexDirection: 'column' }}>
                     <h3>Tags</h3>
                     <div style={{
                         border: '1px solid #ccc',
                         borderRadius: '5px',
                         padding: '10px',
-                        minWidth: '150px',
-                        height: '50px',
+                        minHeight: '50px',
                         display: 'flex',
-                        alignItems: 'center',
+                        flexDirection: 'column',
                     }}>
                         {selectedFilters.length > 0 ? (
                             selectedFilters.map((filter) => (
                                 <span
                                     key={filter}
                                     style={{
-                                        display: 'inline-block',
                                         backgroundColor: '#000',
                                         color: '#fff',
                                         borderRadius: '3px',
                                         padding: '5px 10px',
-                                        margin: '5px',
+                                        margin: '5px 0',
                                     }}
                                 >
                                     {filter}
@@ -101,100 +137,63 @@ function AlumniTools() {
                     </div>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center' }}>
-                        <input
-                            type="text"
-                            placeholder="Search alumni tools..."
-                            value={searchTerm}
-                            onChange={handleSearchChange}
-                            style={{
-                                padding: '10px',
-                                fontSize: '16px',
-                                width: '250px',
-                                marginRight: '20px',
-                            }}
-                        />
-                        
-                        <div style={{ display: 'flex', gap: '10px' }}>
-                            {filters.map((filter) => (
-                                <button
-                                    key={filter}
-                                    type="button"
-                                    onClick={() => toggleFilter(filter)}
-                                    style={{
-                                        padding: '10px 15px',
-                                        fontSize: '16px',
-                                        backgroundColor: selectedFilters.includes(filter) ? '#000' : '#e0e0e0',
-                                        color: selectedFilters.includes(filter) ? '#fff' : '#000',
-                                        border: 'none',
-                                        borderRadius: '5px',
-                                        cursor: 'pointer',
-                                    }}
-                                >
-                                    {filter}
-                                </button>
-                            ))}
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-            <div className="bg-white py-24 sm:py-32">
-                <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', justifyItems: 'stretch' }}>
-                        {filteredPosts.map((post) => (
-                            <article
-                                key={post.id}
-                                style={{
-                                    boxSizing: 'border-box',
-                                    minHeight: '200px',
-                                    borderRadius: '15px',
-                                    padding: '15px',
-                                    margin: '10px',
-                                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-                                }}
-                                className="flex flex-col items-start justify-between bg-white p-4 shadow rounded-md">
-                                <div className="flex items-center gap-x-4 text-xs">
-                                    <time dateTime={post.datetime} className="text-gray-500">
-                                        {post.date}
-                                    </time>
-                                    <a
-                                        href={post.category.href}
-                                        className="relative z-10 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
+                <div style={{ flex: 1 }}>
+                    <div className="bg-white py-24 sm:py-32">
+                        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', justifyItems: 'stretch' }}>
+                                {filteredPosts.map((post) => (
+                                    <article
+                                        key={post.id}
                                         style={{
-                                            backgroundColor: '#f0f0f0',
+                                            boxSizing: 'border-box',
+                                            minHeight: '200px',
                                             borderRadius: '15px',
-                                            padding: '5px 10px',
-                                            color: '#333',
-                                            marginLeft: '10px',
+                                            padding: '15px',
+                                            margin: '10px',
+                                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
                                         }}
-                                    >
-                                        {post.category.title}
-                                    </a>
-                                </div>
-                                <div className="group relative">
-                                    <h3 className="mt-3 text-lg font-semibold text-gray-900 group-hover:text-gray-600">
-                                        <a href={post.href}>
-                                            <span className="absolute inset-0" />
-                                            {post.title}
-                                        </a>
-                                    </h3>
-                                    <p className="mt-5 text-sm text-gray-600 line-clamp-3">{post.description}</p>
-                                </div>
-                                <div className="relative mt-8 flex items-center gap-x-4">
-                                    <div className="text-sm">
-                                        <p className="font-semibold text-gray-900">
-                                            Posted by: {post.author}
-                                        </p>
-                                    </div>
-                                </div>
-                            </article>
-                        ))}
+                                        className="flex flex-col items-start justify-between bg-white p-4 shadow rounded-md">
+                                        <div className="flex items-center gap-x-4 text-xs">
+                                            <time dateTime={post.datetime} className="text-gray-500">
+                                                {post.date}
+                                            </time>
+                                            <a
+                                                href={post.category.href}
+                                                className="relative z-10 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
+                                                style={{
+                                                    backgroundColor: '#f0f0f0',
+                                                    borderRadius: '15px',
+                                                    padding: '5px 10px',
+                                                    color: '#333',
+                                                    marginLeft: '10px',
+                                                }}
+                                            >
+                                                {post.category.title}
+                                            </a>
+                                        </div>
+                                        <div className="group relative">
+                                            <h3 className="mt-3 text-lg font-semibold text-gray-900 group-hover:text-gray-600">
+                                                <a href={post.href}>
+                                                    <span className="absolute inset-0" />
+                                                    {post.title}
+                                                </a>
+                                            </h3>
+                                            <p className="mt-5 text-sm text-gray-600 line-clamp-3">{post.description}</p>
+                                        </div>
+                                        <div className="relative mt-8 flex items-center gap-x-4">
+                                            <div className="text-sm">
+                                                <p className="font-semibold text-gray-900">
+                                                    Posted by: {post.author}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }
