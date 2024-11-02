@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -5,9 +6,6 @@ import AlumniTools from './components/Alumni-Tools';
 import Directory from './components/Directory.js';
 
 function App() {
-
-
-  
   const data = [
     {
       posts: [

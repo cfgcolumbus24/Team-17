@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import alumniData from '../mockAlumniData.json';
+import React, { useState, useEffect } from 'react';
+import UserService from '../api/userService'; // Import the UserService
 import FrontCard from './FrontCard';
 import './Directory.css';
 import ReactCardFlip from 'react-card-flip';
@@ -8,9 +8,50 @@ import BackCard from './BackCard';
 function Directory() {
     const [searchTerm, setSearchTerm] = useState(''); // State to hold the search term
     const [filter, setFilter] = useState('');
-    const alumniList = alumniData[0].alumni;
+    const [alumniList, setAlumniList] = useState([]); // State to store fetched alumni data
+    const [loading, setLoading] = useState(true); // State to handle loading state
+    const [error, setError] = useState(null); // State to handle error
 
     const [flippedCards, setFlippedCards] = useState({}); // State for each card's flip status
+
+    // Fetch all users when the component mounts
+    useEffect(() => {
+        const fetchAlumni = async () => {
+            setLoading(true); // Start loading
+            try {
+                const data = await UserService.getAllUsers(); // Fetch data from API
+                
+                // Group data by user and aggregate residency info
+                const groupedData = data.reduce((acc, item) => {
+                    const userId = item.user.id;
+
+                    if (!acc[userId]) {
+                        acc[userId] = {
+                            ...item.user,
+                            residencies: [] // Initialize an array to hold residency info
+                        };
+                    }
+                    
+                    acc[userId].residencies.push({
+                        name: item.residency.residencyName,
+                        year: item.residency.year
+                    });
+
+                    return acc;
+                }, {});
+
+                // Convert grouped data object to an array
+                setAlumniList(Object.values(groupedData));
+                console.log(Object.values(groupedData));
+            } catch (error) {
+                setError(error.message); // Set error if fetch fails
+            } finally {
+                setLoading(false); // Stop loading
+            }
+        };
+
+        fetchAlumni(); // Call the async function
+    }, []);
 
     const handleClick = (id) => {
         setFlippedCards((prevFlippedCards) => ({
@@ -27,18 +68,28 @@ function Directory() {
         setFilter(event.target.value);
     };
 
+    // Filter the alumni list based on the search term and selected filter
     const filteredAlumni = alumniList
-        .filter((alumni) =>
-            `${alumni.first_name} ${alumni.last_name}`
-                .toLowerCase()
-                .includes(searchTerm.toLowerCase())
-        )
         .filter((alumni) => {
+            // Search within the name field of `user`
+            return alumni.name.toLowerCase().includes(searchTerm.toLowerCase());
+        })
+        .filter((alumni) => {
+            // Apply residency filter
             if (filter) {
-                return alumni.residency_name === filter;
+                return alumni.residencies.some(residency => residency.name === filter);
             }
             return true;
         });
+
+    // Handle loading and error states
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>Error: {error}</p>;
+    }
 
     return (
         <div className="App">
@@ -46,19 +97,7 @@ function Directory() {
                 <h1 className="directory-title">Alumni Directory</h1>
                 {/* Search bar below the header image */}
                 <div className="search-container">
-                    <input
-                        type="text"
-                        placeholder="Search by name..."
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                        className="search-input"
-                    />
-                    <select
-                        name="filter"
-                        value={filter}
-                        onChange={handleChangeFilter}
-                        className="filter-dropdown"
-                    >
+                    <select name="filter" value={filter} onChange={handleChangeFilter}>
                         <option value="">Filter by Residency</option>
                         <option value="World Views">World Views</option>
                         <option value="Swing Space">Swing Space</option>
@@ -67,6 +106,13 @@ function Directory() {
                         <option value="Extended Life">Extended Life</option>
                         <option value="Paris Residency">Paris Residency</option>
                     </select>
+                    <input
+                        type="text"
+                        placeholder="Search by name..."
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                        className="search-input"
+                    />
                 </div>
             </div>
 
@@ -80,13 +126,12 @@ function Directory() {
                     >
                         <div className="front" onClick={() => handleClick(alumni.id)}>
                             <FrontCard
-                                first_name={alumni.first_name}
-                                last_name={alumni.last_name}
-                                residency_name={alumni.residency_name}
-                                image_url={alumni.image_url}
-                                residency_year={alumni.residency_year}
+                                name={alumni.name}
+                                residencies={alumni.residencies} // Pass all residency info
+                                image_url={alumni.pictureUrl}
                                 email={alumni.email}
-                                instagram_url={alumni.instagram_url}
+                                instagram_url={alumni.socials}
+                                portfolio={alumni.portfolio}
                             />
                         </div>
 

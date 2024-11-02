@@ -5,12 +5,13 @@ import { GrMail } from "react-icons/gr"; // Importing the mail icon from react-i
 import { SiInstagram } from "react-icons/si"; // Importing the Instagram icon from react-icons
 
 /* Card for the Alumni Directory */
-const FrontCard = ({ name, residencies, image_url, email, instagram_url, portfolio }) => {
+const FrontCard = ({ name, residencies = [], image_url, email, instagram_url, portfolio }) => {
+  console.log(residencies);
     return (
       <div className="card"> 
           <img 
             src={image_url} 
-            alt={`${name}`}  
+            alt={`${name}'s profile`}  
             className="card-image circular-image"  
           />
           <div className="card-content"> 
@@ -19,8 +20,8 @@ const FrontCard = ({ name, residencies, image_url, email, instagram_url, portfol
             {/* Residency details - displaying each residency in a list */}
             <ul className="residency-list">
               {residencies.map((residency, index) => (
-                <li key={index} className="residency-item">
-                  {residency.name} - {residency.year}
+                <li key={index}>
+                  `{residency.name} - {residency.year}`
                 </li>
               ))}
             </ul>
