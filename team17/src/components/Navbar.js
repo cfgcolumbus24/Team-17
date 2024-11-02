@@ -34,14 +34,6 @@ function Navbar() {
                 >
                     <a href="/">Alumni Directory</a>
                 </li>
-
-                <li>
-                    <button className = "SignIn"> Sign In </button>
-                </li>
-                
-                <li>
-                    <button className = "SignOut"> Sign Out </button>
-                </li>
             </ul>
 
         </nav>
