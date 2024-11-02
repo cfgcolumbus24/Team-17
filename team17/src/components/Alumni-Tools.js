@@ -247,10 +247,54 @@ function AlumniTools() {
             </div>
 
             {selectedPost && (
-                <Popup isOpen={!!selectedPost} onClose={closePopup} post={selectedPost} />
+                <Popup post={selectedPost} onClose={closePopup} isNewPost={false} />
             )}
+
             {isNewPostPopupOpen && (
-                <Popup isOpen={isNewPostPopupOpen} onClose={closePopup} />
+                <Popup onClose={closePopup} isNewPost={true}>
+                    <form onSubmit={handleNewPostSubmit}>
+                        <h2>New Post</h2>
+                        <input
+                            type="text"
+                            name="title"
+                            placeholder="Title"
+                            value={newPostData.title}
+                            onChange={handleNewPostChange}
+                            required
+                        />
+                        <textarea
+                            name="description"
+                            placeholder="Description"
+                            value={newPostData.description}
+                            onChange={handleNewPostChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="category"
+                            placeholder="Category"
+                            value={newPostData.category}
+                            onChange={handleNewPostChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="author"
+                            placeholder="Author"
+                            value={newPostData.author}
+                            onChange={handleNewPostChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="imageUrl"
+                            placeholder="Image URL"
+                            value={newPostData.imageUrl}
+                            onChange={handleNewPostChange}
+                        />
+                        <button type="submit">Submit</button>
+                    </form>
+                </Popup>
             )}
         </div>
     );
